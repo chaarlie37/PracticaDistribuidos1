@@ -1,4 +1,4 @@
-package es.sd;
+package sd.practica1;
 
 import java.util.Date;
 

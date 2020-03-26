@@ -1,12 +1,25 @@
-package es.sd;
+package sd.practica1;
 
-public class Cliente {
+import javax.persistence.*;
+import java.util.Collection;
+
+@Entity
+public class Autor {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
     private String nombre;
     private String apellidos;
     private String NIF;
+    private int anyoNacimiento;
+    private String pais;
     private String direccion;
     private String email;
-    private String telefono;
+    private String tlf;
+    @OneToMany
+    private Collection<Cuadro> cuadros;
 
     public String getNombre() {
         return nombre;
@@ -32,6 +45,22 @@ public class Cliente {
         this.NIF = NIF;
     }
 
+    public int getAnyoNacimiento() {
+        return anyoNacimiento;
+    }
+
+    public void setAnyoNacimiento(int anyoNacimiento) {
+        this.anyoNacimiento = anyoNacimiento;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
     public String getDireccion() {
         return direccion;
     }
@@ -48,11 +77,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getTlf() {
+        return tlf;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTlf(String tlf) {
+        this.tlf = tlf;
     }
 }

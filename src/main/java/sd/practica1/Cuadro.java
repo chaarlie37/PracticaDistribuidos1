@@ -1,6 +1,14 @@
-package es.sd;
+package sd.practica1;
 
+import javax.persistence.*;
+
+@Entity
 public class Cuadro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
     private boolean vendido;
     private String titulo;
     private String descripcion;
@@ -8,6 +16,7 @@ public class Cuadro {
     private float anchura;
     private float altura;
     private int precio;
+    @ManyToOne
     private Autor autor;
 
     public boolean isVendido() {

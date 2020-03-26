@@ -1,14 +1,23 @@
-package es.sd;
+package sd.practica1;
 
-public class Autor {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Cliente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
     private String nombre;
     private String apellidos;
     private String NIF;
-    private int anyoNacimiento;
-    private String pais;
     private String direccion;
     private String email;
-    private String tlf;
+    private String telefono;
 
     public String getNombre() {
         return nombre;
@@ -34,22 +43,6 @@ public class Autor {
         this.NIF = NIF;
     }
 
-    public int getAnyoNacimiento() {
-        return anyoNacimiento;
-    }
-
-    public void setAnyoNacimiento(int anyoNacimiento) {
-        this.anyoNacimiento = anyoNacimiento;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
     public String getDireccion() {
         return direccion;
     }
@@ -66,11 +59,11 @@ public class Autor {
         this.email = email;
     }
 
-    public String getTlf() {
-        return tlf;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setTlf(String tlf) {
-        this.tlf = tlf;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }
