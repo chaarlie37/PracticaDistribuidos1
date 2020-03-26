@@ -1,4 +1,4 @@
-package sd.practica1;
+package sd.practica1.model;
 
 import java.util.Date;
 

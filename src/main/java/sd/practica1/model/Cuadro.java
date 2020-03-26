@@ -1,4 +1,4 @@
-package sd.practica1;
+package sd.practica1.model;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ public class Cuadro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     private boolean vendido;
     private String titulo;
@@ -17,7 +17,24 @@ public class Cuadro {
     private float altura;
     private int precio;
     @ManyToOne
+    @JoinColumn(name = "id_autor")
     private Autor autor;
+
+    public Cuadro(){
+
+    }
+
+    public Cuadro(String titulo){
+        this.titulo =  titulo;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
 
     public boolean isVendido() {
         return vendido;

@@ -1,4 +1,4 @@
-package sd.practica1;
+package sd.practica1.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     private String nombre;
     private String apellidos;
@@ -18,6 +18,14 @@ public class Cliente {
     private String direccion;
     private String email;
     private String telefono;
+
+    public Cliente(){
+
+    }
+
+    public Cliente(String nombre){
+        this.nombre = nombre;
+    }
 
     public String getNombre() {
         return nombre;

@@ -1,4 +1,7 @@
 package sd.practica1.repositories;
 
-public interface CuadroRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import sd.practica1.model.Cuadro;
+
+public interface CuadroRepository extends JpaRepository<Cuadro, Integer> {
 }

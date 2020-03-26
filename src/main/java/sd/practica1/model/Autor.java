@@ -1,4 +1,4 @@
-package sd.practica1;
+package sd.practica1.model;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -8,7 +8,7 @@ public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer id_autor;
 
     private String nombre;
     private String apellidos;
@@ -18,8 +18,24 @@ public class Autor {
     private String direccion;
     private String email;
     private String tlf;
-    @OneToMany
+    @OneToMany(mappedBy = "autor")
     private Collection<Cuadro> cuadros;
+
+    public Autor(){
+
+    }
+
+    public Autor(String nombre){
+        this.nombre = nombre;
+    }
+
+    public Integer getId_autor() {
+        return id_autor;
+    }
+
+    public void setId_autor(Integer id_autor) {
+        this.id_autor = id_autor;
+    }
 
     public String getNombre() {
         return nombre;

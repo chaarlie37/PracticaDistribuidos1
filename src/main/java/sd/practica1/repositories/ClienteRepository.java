@@ -1,4 +1,7 @@
 package sd.practica1.repositories;
 
-public interface ClienteRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import sd.practica1.model.Cliente;
+
+public interface ClienteRepository extends JpaRepository <Cliente, Integer> {
 }
