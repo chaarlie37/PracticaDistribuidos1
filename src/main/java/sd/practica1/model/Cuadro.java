@@ -24,8 +24,13 @@ public class Cuadro {
 
     }
 
-    public Cuadro(String titulo){
+    public Cuadro(String titulo,String descripcion,String anyoFinalizacion, float anchura, float altura, int precio){
         this.titulo =  titulo;
+        this.descripcion= descripcion;
+        this.anyoFinalizacion=anyoFinalizacion;
+        this.anchura=anchura;
+        this.altura=altura;
+        this.precio=precio;
     }
 
     public void setId(Integer id) {

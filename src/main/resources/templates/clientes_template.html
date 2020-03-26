@@ -5,6 +5,7 @@
     <title>Clientes</title>
 </head>
 <body>
+    <a href="nuevo_cliente.html">Añadir cliente</a>
     <p th:each="cliente : ${clientes}" th:text="${cliente.getNombre()}"></p>
 </body>
 </html>

@@ -22,10 +22,10 @@ public class CuadrosController {
     @PostConstruct
     public void init(){
 
-        Cuadro c1 = new Cuadro("Titulo1");
-        Cuadro c2 = new Cuadro("Titulo2");
-        Cuadro c3 = new Cuadro("Titulo3");
-        Cuadro c4 = new Cuadro("Titulo4");
+        Cuadro c1 = new Cuadro("Titulo1","aaa","aaa",30,30,100);
+        Cuadro c2 = new Cuadro("Titulo2","bbb","bbb",40,40,200);
+        Cuadro c3 = new Cuadro("Titulo3","ccc","ccc",50,50,300);
+        Cuadro c4 = new Cuadro("Titulo4","ddd","ddd",60,60,400);
         cuadroRepository.save(c1);
         cuadroRepository.save(c2);
         cuadroRepository.save(c3);

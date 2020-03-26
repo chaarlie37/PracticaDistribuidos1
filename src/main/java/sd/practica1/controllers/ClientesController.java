@@ -17,10 +17,10 @@ public class ClientesController {
 
     @PostConstruct
     public void init(){
-        Cliente c1 = new Cliente("Cliente1");
-        Cliente c2 = new Cliente("Cliente2");
-        Cliente c3 = new Cliente("Cliente3");
-        Cliente c4 = new Cliente("Cliente4");
+        Cliente c1 = new Cliente("Cliente1","aaa","aaa","aaa","aaa","aaa");
+        Cliente c2 = new Cliente("Cliente2","bbb","bbb","bbb","bbb","bbb");
+        Cliente c3 = new Cliente("Cliente3","ccc","ccc","ccc","ccc","ccc");
+        Cliente c4 = new Cliente("Cliente4","ddd","ddd","ddd","ddd","ddd");
         clienteRepository.save(c1);
         clienteRepository.save(c2);
         clienteRepository.save(c3);
@@ -33,4 +33,9 @@ public class ClientesController {
         return "clientes_template";
     }
 
+    @RequestMapping("/guardarcliente")
+    public String guardarCliente(Cliente cliente,Model model){
+        clienteRepository.save(cliente);
+        return "exito";
+    }
 }

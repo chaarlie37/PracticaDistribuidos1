@@ -25,8 +25,15 @@ public class Autor {
 
     }
 
-    public Autor(String nombre){
+    public Autor(String nombre,String apellidos,String NIF, int anyoNacimiento, String pais, String direccion, String email, String tlf){
         this.nombre = nombre;
+        this.apellidos=apellidos;
+        this.NIF=NIF;
+        this.anyoNacimiento=anyoNacimiento;
+        this.pais=pais;
+        this.direccion=direccion;
+        this.email=email;
+        this.tlf=tlf;
     }
 
     public Integer getId_autor() {

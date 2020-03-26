@@ -23,8 +23,21 @@ public class Cliente {
 
     }
 
-    public Cliente(String nombre){
+    public Cliente(String nombre, String apellidos, String NIF, String direccion, String email, String telefono){
         this.nombre = nombre;
+        this.apellidos=apellidos;
+        this.NIF= NIF;
+        this.direccion=direccion;
+        this.email=email;
+        this.telefono=telefono;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {

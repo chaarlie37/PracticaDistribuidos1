@@ -18,10 +18,10 @@ public class AutoresController {
     @PostConstruct
     public void init(){
 
-        Autor a1 = new Autor("Fran");
-        Autor a2 = new Autor("Margarita");
-        Autor a3 = new Autor("Lidia");
-        Autor a4 = new Autor("Sr. Croqueta");
+        Autor a1 = new Autor("Fran","aaa","aaa",1111,"aaa","aaa","aaa","aaa");
+        Autor a2 = new Autor("Margarita","bbb","bbb",2222,"bbb","bbb","bbb","bbb");
+        Autor a3 = new Autor("Lidia","ccc","ccc",3333,"ccc","ccc","ccc","ccc");
+        Autor a4 = new Autor("Sr. Croqueta","ddd","ddd",4444,"ddd","ddd","ddd","ddd");
         autorRepository.save(a1);
         autorRepository.save(a2);
         autorRepository.save(a3);
@@ -36,4 +36,9 @@ public class AutoresController {
         return "autores_template";
     }
 
+    @RequestMapping("/guardarautor")
+    public String guardarAutor(Autor autor, Model model){
+        autorRepository.save(autor);
+        return "exito";
+    }
 }
