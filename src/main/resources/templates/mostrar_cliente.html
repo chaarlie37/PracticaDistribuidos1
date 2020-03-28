@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cliente</title>
+</head>
+<body>
+    <p th:text="'Nombre: ' + ${cliente.getNombre()}"></p>
+    <p th:text="'Apellidos: ' + ${cliente.getApellidos()}"></p>
+    <p th:text="'NIF: ' + ${cliente.getNIF()}"></p>
+    <p th:text="'Direccion: ' + ${cliente.getDireccion()}"></p>
+    <p th:text="'e-mail: ' + ${cliente.getEmail()}"></p>
+    <p th:text="'Telefono: ' + ${cliente.getTelefono()}"></p>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo cliente</title>
+</head>
+<body>
+    <form th:action="@{/modificarcliente(id = ${cliente.getId()})}" method="post">
+        <p>Nombre</p>
+        <input type="text" name="nombre" th:value="${cliente.getNombre()}">
+        <p>Apellidos</p>
+        <input type="text" name="apellidos" th:value="${cliente.getApellidos()}">
+        <p>NIF</p>
+        <input type="text" name="NIF" th:value="${cliente.getNIF()}">
+        <p>Direccion</p>
+        <input type="text" name="direccion" th:value="${cliente.getDireccion()}">
+        <p>Email</p>
+        <input type="text" name="email" th:value="${cliente.getEmail()}">
+        <p>Telefono</p>
+        <input type="text" name="telefono" th:value="${cliente.getTelefono()}">
+        <input type="submit" value="Guardar">
+    </form>
+</body>
+</html>

@@ -6,6 +6,11 @@
 </head>
 <body>
     <a href="nuevo_cliente.html">Añadir cliente</a>
-    <p th:each="cliente : ${clientes}" th:text="${cliente.getNombre()}"></p>
+    <p th:each="cliente : ${clientes}">
+        <span  th:text="${cliente.getNombre()}" ></span>
+        <a th:href="@{/mostrarcliente(nif = ${cliente.getNIF()})}" th:text="'Detalles'"></a>
+        <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" th:text="'Modificar'"></a>
+    </p>
+
 </body>
 </html>
