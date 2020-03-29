@@ -1,14 +1,14 @@
-- Detalles y modificar de Autores y Cuadros
-- Lista de autores al crear y modificar cuadros
-- Busquedas en cuadros y autores
+- Detalles y modificar de Autores y Cuadros        LIDIA
+- Lista de autores al crear y modificar cuadros    CARLOS
+- Busquedas en cuadros y autores                   FRAN
 
 
 TABLAS:
-- Clientes
+- Clientes    LIDIA
     NIF      Nombre    Apellidos      Detalles     Modificar
 
-- Autores
+- Autores     FRAN
     NIF      Nombre    Apellidos      Detalles     Modificar
 
-- Cuadros
+- Cuadros     CARLOS
     Titulo       Autor(Nombre)      Año       Precio       Detalles        Modificar
