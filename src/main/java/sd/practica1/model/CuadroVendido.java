@@ -1,6 +1,6 @@
 package sd.practica1.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class CuadroVendido extends Cuadro{
     private String comprador;

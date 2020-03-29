@@ -77,13 +77,13 @@ public class ClientesController {
         List<Cliente> lista = null;
 
         switch (criterio){
-            case "todo": lista = clienteRepository.findByNombreContainsOrApellidosContainingOrNIFContainsOrDireccionContainsOrEmailContainsOrTelefonoContainsIgnoreCase(busqueda, busqueda, busqueda, busqueda, busqueda, busqueda); break;
+            case "todo": lista = clienteRepository.findByNombreContainsOrApellidosContainsOrNIFContainsOrDireccionContainsOrEmailContainsOrTelefonoContainsIgnoreCase(busqueda, busqueda, busqueda, busqueda, busqueda, busqueda); break;
             case "nombre" : lista = clienteRepository.findByNombreContainsIgnoreCase(busqueda); break;
             case "apellidos" : lista = clienteRepository.findByApellidosContainsIgnoreCase(busqueda); break;
             case "nif" : lista = clienteRepository.findByNIFContainsIgnoreCase(busqueda); break;
             case "direccion" : lista = clienteRepository.findByDireccionContainsIgnoreCase(busqueda); break;
-            case "email" : lista = clienteRepository.findByEmailContainsIgnoreCase(busqueda);
-            case "telefono" : lista = clienteRepository.findByTelefonoContainsIgnoreCase(busqueda);
+            case "email" : lista = clienteRepository.findByEmailContainsIgnoreCase(busqueda); break;
+            case "telefono" : lista = clienteRepository.findByTelefonoContainsIgnoreCase(busqueda); break;
         }
         if(lista.isEmpty()){
             String mensaje;

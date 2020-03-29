@@ -1,0 +1,14 @@
+- Detalles y modificar de Autores y Cuadros
+- Lista de autores al crear y modificar cuadros
+- Busquedas en cuadros y autores
+
+
+TABLAS:
+- Clientes
+    NIF      Nombre    Apellidos      Detalles     Modificar
+
+- Autores
+    NIF      Nombre    Apellidos      Detalles     Modificar
+
+- Cuadros
+    Titulo       Autor(Nombre)      Año       Precio       Detalles        Modificar
