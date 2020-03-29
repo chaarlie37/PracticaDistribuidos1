@@ -3,9 +3,18 @@ package sd.practica1.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import sd.practica1.model.Cliente;
 
+import javax.validation.constraints.Max;
+import java.util.List;
 import java.util.Optional;
 
 public interface ClienteRepository extends JpaRepository <Cliente, Integer> {
     Cliente findByNIF(String nif);
-    Optional<Cliente> findById(Integer id);
+    List<Cliente> findByNombreContainsOrApellidosContainingOrNIFContainsOrDireccionContainsOrEmailContainsOrTelefonoContainsIgnoreCase(String nombre, String apellidos, String nif, String direccion, String email, String telefono);
+    List<Cliente> findByNombreContainsIgnoreCase(String nombre);
+    List<Cliente> findByApellidosContainsIgnoreCase(String apellidos);
+    List<Cliente> findByNIFContainsIgnoreCase(String nif);
+    List<Cliente> findByDireccionContainsIgnoreCase(String direccion);
+    List<Cliente> findByEmailContainsIgnoreCase(String email);
+    List<Cliente> findByTelefonoContainsIgnoreCase(String telefono);
+
 }

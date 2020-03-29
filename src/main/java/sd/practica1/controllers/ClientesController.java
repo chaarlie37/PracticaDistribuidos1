@@ -1,5 +1,6 @@
 package sd.practica1.controllers;
 
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import sd.practica1.model.Cliente;
 import sd.practica1.repositories.ClienteRepository;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -69,4 +71,39 @@ public class ClientesController {
         clienteRepository.save(nuevo);
         return "exito";
     }
+
+    @RequestMapping("/buscarcliente")
+    public String buscarCliente(String busqueda, String criterio, Model model){
+        List<Cliente> lista = null;
+
+        switch (criterio){
+            case "todo": lista = clienteRepository.findByNombreContainsOrApellidosContainingOrNIFContainsOrDireccionContainsOrEmailContainsOrTelefonoContainsIgnoreCase(busqueda, busqueda, busqueda, busqueda, busqueda, busqueda); break;
+            case "nombre" : lista = clienteRepository.findByNombreContainsIgnoreCase(busqueda); break;
+            case "apellidos" : lista = clienteRepository.findByApellidosContainsIgnoreCase(busqueda); break;
+            case "nif" : lista = clienteRepository.findByNIFContainsIgnoreCase(busqueda); break;
+            case "direccion" : lista = clienteRepository.findByDireccionContainsIgnoreCase(busqueda); break;
+            case "email" : lista = clienteRepository.findByEmailContainsIgnoreCase(busqueda);
+            case "telefono" : lista = clienteRepository.findByTelefonoContainsIgnoreCase(busqueda);
+        }
+        if(lista.isEmpty()){
+            String mensaje;
+            if(criterio.equals("todo"))
+                mensaje = "No se ha encontrado ningun cliente que coincida con " +  "\"" + busqueda + "\"";
+            else
+                mensaje = "No se ha encontrado ningun cliente con " + criterio + " " + "\"" + busqueda + "\"";
+            model.addAttribute("mensaje", mensaje);
+            return "error_msg";
+        }
+        else if(busqueda.equals("")){
+            String mensaje = "No se ha insertado nada en la barra de busqueda.";
+            model.addAttribute("mensaje", mensaje);
+            return "error_msg";
+        }
+        else{
+            model.addAttribute("clientes", lista);
+            return "clientes_template";
+        }
+    }
+
+
 }
