@@ -2,16 +2,82 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <title>Inicio</title>
 </head>
 <body>
 
-    <h1>Inicio</h1>
-    <a href="/cuadros">Gestionar cuadros</a>
-    <a href="/autores">Gestionar autores</a>
-    <a href="/clientes">Gestionar clientes</a>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Inicio</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/clientes">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cuadros">Cuadros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/autores">Autores</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <br><br><br><br>
+
+    <h1 class="my-4">Gestion de la base de datos</h1>
+
+    <!-- Portfolio Section -->
+
+
+    <div class="row">
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a href="/clientes"><img class="card-img-top" src="http://placehold.it/700x400"></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="/clientes" class="btn btn-primary">Clientes</a>
+                    </h4>
+                    <p class="card-text">Añadir, consultar y modificar clientes.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a href="/cuadros"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="/cuadros" class="btn btn-primary">Cuadros</a>
+                    </h4>
+                    <p class="card-text">Añadir, consultar y modificar cuadros.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+            <div class="card h-100">
+                <a href="/autores"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="/autores" class="btn btn-primary">Autores</a>
+                    </h4>
+                    <p class="card-text">Añadir, consultar y modificar autores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+</div>
 
 </body>
 </html>

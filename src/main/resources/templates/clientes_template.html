@@ -2,37 +2,110 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,900' rel='stylesheet' type='text/css'>
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <title>Clientes</title>
 </head>
 <body>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Inicio</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/clientes">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cuadros">Cuadros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/autores">Autores</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br><br><br><br>
+
+<div class="container">
+
     <h1>Clientes</h1>
+    <br>
     <form action="/buscarcliente" method="get">
-        <p>
-            Buscar:
-            <input type="text" name="busqueda">
-            <input type="submit" value="Buscar">
-            Buscar por:
-            <select name="criterio">
-                <option value="todo">Todo</option>
-                <option value="nombre">Nombre</option>
-                <option value="apellidos">Apellidos</option>
-                <option value="nif">NIF</option>
-                <option value="direccion">Direccion</option>
-                <option value="email">e-mail</option>
-                <option value="telefono">Telefono</option>
-            </select>
-        </p>
+
+        <div class="input-group">
+            <div class="barra-busqueda">
+                <input type="text" name="busqueda" class="form-control"  placeholder="Buscar...">
+            </div>
+            <input type="submit" value="Buscar" class="btn btn-primary">
+        </div>
+        <br>
+
+        Buscar por:
+        <select name="criterio" class="custom-select">
+            <option value="todo">Todo</option>
+            <option value="nombre">Nombre</option>
+            <option value="apellidos">Apellidos</option>
+            <option value="nif">NIF</option>
+            <option value="direccion">Direccion</option>
+            <option value="email">e-mail</option>
+            <option value="telefono">Telefono</option>
+        </select>
+
 
     </form>
-    <a href="nuevo_cliente.html">Añadir cliente</a>
-    <p th:each="cliente : ${clientes}">
-        <span  th:text="${cliente.getNombre()}" ></span>
-        <a th:href="@{/mostrarcliente(nif = ${cliente.getNIF()})}" th:text="'Detalles'"></a>
-        <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" th:text="'Modificar'"></a>
-    </p>
 
+    <br>
+
+    <a href="nuevo_cliente.html" class="btn btn-primary">Añadir cliente</a>
+
+    <br>
+    <br>
+
+    <div class="limiter">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead>
+                        <tr class="table100-head">
+                            <th class="column1">NIF</th>
+                            <th class="column2">Nombre</th>
+                            <th class="column3">Apellidos</th>
+                            <th class="column4"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="cliente : ${clientes}">
+                            <td>
+                                <a th:href="@{/mostrarcliente(nif = ${cliente.getNIF()})}">
+                                    <div th:text="${cliente.getNIF()}" class="column1"></div>
+                                </a>
+                            </td>
+                            <td>
+                                <a th:href="@{/mostrarcliente(nif = ${cliente.getNIF()})}">
+                                    <div th:text="${cliente.getNombre()}" class="column2"></div>
+                                </a>
+                            </td>
+                            <td>
+                                <a th:href="@{/mostrarcliente(nif = ${cliente.getNIF()})}">
+                                    <div th:text="${cliente.getApellidos()}" class="column3"></div>
+                                </a>
+                            </td>
+                            <td class="column4">
+                                <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" th:text="'Modificar'"></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+
+</div>
 
 </body>
 </html>
