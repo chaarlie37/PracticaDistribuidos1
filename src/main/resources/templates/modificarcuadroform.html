@@ -11,8 +11,8 @@
     <p>Titulo</p>
     <input type="text" name="titulo" th:value="${cuadro.getTitulo()}">
     <p>Autor</p>
-        <select name="autor">
-           <option th:each="autor : ${autores}" th:value="${autor}" th:text="${autor}" th:selected="${cuadro.getAutor()}"></option>
+        <select name="nifautor">
+           <option th:each="autor : ${autores}" th:value="${autor.getNIF()}" th:text="${autor}" th:selected="${cuadro.getAutor()}"></option>
         </select>
     <p>Año</p>
     <input type="text" name="anyo" th:value="${cuadro.getAnyoFinalizacion()}">

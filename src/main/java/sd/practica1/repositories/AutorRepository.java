@@ -12,7 +12,7 @@ public interface AutorRepository extends JpaRepository<Autor, Integer> {
     List<Autor> findByNombreContainsIgnoreCase(String nombre);
     List<Autor> findByApellidosContainsIgnoreCase(String apellidos);
     List<Autor> findByNIFContainsIgnoreCase(String nif);
-    List<Autor> findByAnyoNacimientoContains(int anyoNacimiento);
+    List<Autor> findByAnyoNacimiento(int anyoNacimiento);
     List<Autor> findByPaisContainsIgnoreCase(String pais);
     List<Autor> findByDireccionContainsIgnoreCase(String direccion);
     List<Autor> findByEmailContainsIgnoreCase(String email);

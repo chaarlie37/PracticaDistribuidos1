@@ -79,13 +79,18 @@ public class AutoresController {
                 lista= autorRepository.findByNIFContainsIgnoreCase(busqueda);
                 break;
             case "anyoNacimiento":
-                Integer m= Integer.parseInt(busqueda);
-                if (m<2020) {
-                    lista = autorRepository.findByAnyoNacimientoContains(m);
+                int m;
+                try{
+                    m = Integer.parseInt(busqueda);
+                }catch (Exception e){
+                    m = -1;
+                }
+                if (m>0) {
+                    lista = autorRepository.findByAnyoNacimiento(m);
                     break;
                 }
                 else{
-                    String mensaje = "El año tiene que ser menor a 2020.";
+                    String mensaje = "Error. El año de nacimiento debe ser mayor que 0.";
                     model.addAttribute( "mensaje", mensaje);
                     return "error_msg";
                 }

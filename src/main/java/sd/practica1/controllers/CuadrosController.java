@@ -72,15 +72,19 @@ public class CuadrosController {
         return "mostrarcuadro";
     }
 
-    /*
+
     @RequestMapping("/modificarcuadro")
-    public String modificarCuadro(Integer id, Cuadro nuevo, String autor, Model model){
-        Autor a = autorRepository.findByNIF(autor);
-        cuadro.setAutor(a);
-        a.agregarCuadro(cuadro);
-        cuadroRepository.save(cuadro);
+    public String modificarCuadro(Integer id, Cuadro nuevo, String nifautor, Model model) {
+        Autor a = autorRepository.findByNIF(nifautor);
+        nuevo.setAutor(a);
+        a.agregarCuadro(nuevo);
+        cuadroRepository.save(nuevo);
         autorRepository.save(a);
         return "exito";
+
+
+    }
+        /*
     public String guardarCuadro(Cuadro cuadro, Model model){
         if(cuadroRepository.findByTitulo(cuadro.getTitulo()) == null) {
             cuadroRepository.save(cuadro);

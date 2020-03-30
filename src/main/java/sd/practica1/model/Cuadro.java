@@ -104,4 +104,5 @@ public class Cuadro {
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
+
 }
