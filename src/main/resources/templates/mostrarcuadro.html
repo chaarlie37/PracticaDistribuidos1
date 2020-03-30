@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cuadro</title>
+</head>
+<body>
+    <p th:text="'Título:' + ${cuadro.getTitulo()}"></p>
+    <p th:text="'Autor:' + ${cuadro.getAutor()}"></p>
+    <p th:text="'Año:' + ${cuadro.getAnyoFinalizacion()}"></p>
+    <p th:text="'Descripción:' + ${cuadro.getDescripcion()}"></p>
+    <p th:text="'Precio:' + ${cuadro.getPrecio()}"></p>
+    <p th:text="'Anchura:' + ${cuadro.getAnchura()}"></p>
+    <p th:text="'Altura:' + ${cuadro.getAltura()}"></p>
+    <p th:text="'Vendido:' + ${cuadro.isVendido()}"></p>
+
+</body>
+</html>

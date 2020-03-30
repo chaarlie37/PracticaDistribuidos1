@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo cuadro</title>
+</head>
+<body>
+    <form th:action="@{/modificarcuadro(id = ${cuadro.getId()})}" method="post">
+    <p>Titulo</p>
+    <input type="text" name="titulo" th:value="${cuadro.getTitulo()}">
+    <p>Autor</p>
+    <input type="text" name="autor" th:value="${cuadro.getAutor()}">
+    <p>Año</p>
+    <input type="text" name="anyo" th:value="${cuadro.getAnyoFinalizacion()}">
+    <p>Descripción</p>
+    <input type="text" name="descripcion" th:value="${cuadro.getDescripcion()}">
+    <p>Precio</p>
+    <input type="text" name="precio" th:value="${cuadro.getPrecio()}">
+    <p>Anchura</p>
+    <input type="text" name="anchura" th:value="${cuadro.getAnchura()}">
+    <p>Altura</p>
+    <input type="text" name="altura" th:value="${cuadro.getAltura()}">
+    <p>Vendido</p>
+    <input type="text" name="vendido" th:value="${cuadro.isVendido()}">
+    <input type="submit" value="Guardar">
+    </form>
+
+</body>
+</html>

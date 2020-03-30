@@ -6,6 +6,10 @@
 </head>
 <body>
     <a href="nuevo_cuadro.html">Añadir cuadro</a>
-    <p th:each="cuadro : ${cuadros}" th:text="${cuadro.getTitulo()}"></p>
+    <p th:each="cuadro : ${cuadros}">
+        <span th:text="${cuadro.getTitulo()}"></span>
+        <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}" th:text="'Detalles'"></a>
+        <a th:href="@{/modificarcuadroform(titulo = ${cuadro.getTitulo()})}" th:text="'Modificar'"></a>
+    </p>
 </body>
 </html>
