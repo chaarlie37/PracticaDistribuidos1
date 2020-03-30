@@ -11,6 +11,7 @@ import sd.practica1.repositories.CuadroRepository;
 
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Controller
 public class CuadrosController {
@@ -23,10 +24,10 @@ public class CuadrosController {
     @PostConstruct
     public void init(){
 
-        Cuadro c1 = new Cuadro("Titulo1","aaa","aaa",30,30,100);
-        Cuadro c2 = new Cuadro("Titulo2","bbb","bbb",40,40,200);
-        Cuadro c3 = new Cuadro("Titulo3","ccc","ccc",50,50,300);
-        Cuadro c4 = new Cuadro("Titulo4","ddd","ddd",60,60,400);
+        Cuadro c1 = new Cuadro("Titulo1","aaa",1111,30,30,100);
+        Cuadro c2 = new Cuadro("Titulo2","bbb",1112,40,40,200);
+        Cuadro c3 = new Cuadro("Titulo3","ccc",1113,50,50,300);
+        Cuadro c4 = new Cuadro("Titulo4","ddd",1114,60,60,400);
         cuadroRepository.save(c1);
         cuadroRepository.save(c2);
         cuadroRepository.save(c3);
@@ -66,6 +67,7 @@ public class CuadrosController {
         return "exito";
     }
 
+
     @RequestMapping("/mostrarcuadro")
     public String mostrarCuadro(@RequestParam String titulo, Model model){
         Cuadro cuadro = cuadroRepository.findByTitulo(titulo);
@@ -73,4 +75,46 @@ public class CuadrosController {
         return "mostrarcuadro";
     }
 
+    @RequestMapping("/buscarcuadro")
+    public String buscarCuadro(String busqueda, String criterio, Model model){
+        List<Cuadro> lista=null;
+
+
+        switch (criterio){
+            case "todo":
+                break;
+            case "titulo":
+                lista= cuadroRepository.findByTituloContainsIgnoreCase(busqueda);
+                break;
+            case "descripcion":
+                lista=cuadroRepository.findByDescripcionIgnoreCase(busqueda);
+                break;
+            case "anyoFinalizacion":
+                break;
+            case "anchura":
+                break;
+            case "altura":
+                break;
+            case "precio":
+                break;
+        }
+        if (lista.isEmpty()){
+            String men;
+            if (criterio.equals("todo"))
+                men = "No se ha encontrado ningun cuadro que coincida con " +  "\"" + busqueda + "\"";
+            else
+                men = "No se ha encontrado ningun cuadro con " + criterio + " " + "\"" + busqueda + "\"";
+            model.addAttribute("mensaje", men);
+            return "error_msg";
+        }
+        else if(busqueda.equals("")){
+            String mens = "No se ha insertado nada en la barra de busqueda.";
+            model.addAttribute("mensaje", mens);
+            return "error_msg";
+        }
+        else {
+            model.addAttribute("cuadros", lista);
+            return "cuadros_template";
+        }
+    }
 }

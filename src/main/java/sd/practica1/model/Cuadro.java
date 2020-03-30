@@ -12,7 +12,7 @@ public class Cuadro {
     private boolean vendido;
     private String titulo;
     private String descripcion;
-    private String anyoFinalizacion;
+    private int anyoFinalizacion;
     private float anchura;
     private float altura;
     private int precio;
@@ -24,7 +24,7 @@ public class Cuadro {
 
     }
 
-    public Cuadro(String titulo,String descripcion,String anyoFinalizacion, float anchura, float altura, int precio){
+    public Cuadro(String titulo,String descripcion,int anyoFinalizacion, float anchura, float altura, int precio){
         this.titulo =  titulo;
         this.descripcion= descripcion;
         this.anyoFinalizacion=anyoFinalizacion;
@@ -57,11 +57,11 @@ public class Cuadro {
         this.descripcion = descripcion;
     }
 
-    public String getAnyoFinalizacion() {
+    public int getAnyoFinalizacion() {
         return anyoFinalizacion;
     }
 
-    public void setAnyoFinalizacion(String anyoFinalizacion) {
+    public void setAnyoFinalizacion(int anyoFinalizacion) {
         this.anyoFinalizacion = anyoFinalizacion;
     }
 

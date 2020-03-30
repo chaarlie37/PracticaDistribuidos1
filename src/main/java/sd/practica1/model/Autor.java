@@ -17,7 +17,7 @@ public class Autor {
     private String pais;
     private String direccion;
     private String email;
-    private String tlf;
+    private String telefono;
     @OneToMany(mappedBy = "autor")
     private Collection<Cuadro> cuadros;
 
@@ -33,7 +33,7 @@ public class Autor {
         this.pais=pais;
         this.direccion=direccion;
         this.email=email;
-        this.tlf=tlf;
+        this.telefono=tlf;
     }
 
     public Integer getId_autor() {
@@ -101,10 +101,10 @@ public class Autor {
     }
 
     public String getTlf() {
-        return tlf;
+        return telefono;
     }
 
     public void setTlf(String tlf) {
-        this.tlf = tlf;
+        this.telefono = tlf;
     }
 }

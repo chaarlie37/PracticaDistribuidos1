@@ -5,7 +5,43 @@
     <title>Autores</title>
 </head>
 <body>
+    <h1>Autores</h1>
+    <form action="/buscarautor" method="get">
+        <p>
+            Buscar:
+            <input type="text" name="busqueda">
+            <input type="submit" value="Buscar">
+            Buscar por:
+            <select name="criterio">
+                <option value="todo">Todo</option>
+                <option value="nombre">Nombre</option>
+                <option value="apellidos">Apellidos</option>
+                <option value="nif">NIF</option>
+                <option value="anyoNacimiento">AñoNacimiento</option>
+                <option value="pais">Pais</option>
+                <option value="direccion">Direccion</option>
+                <option value="email">Email</option>
+                <option value="telefono">Telefono</option>
+            </select>
+        </p>
+    </form>
     <a href="nuevo_autor.html">Añadir autor</a>
-    <p th:each="autor : ${autores}" th:text="${autor.getNombre()}"></p>
+    <table class="Autores">
+        <tr>
+            <th>NIF</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Detalles</th>
+            <th>Modificar</th>
+        </tr>
+        <tr th:each="autor : ${autores}">
+            <td th:text="${autor.getNIF()}"> </td>
+            <td th:text="${autor.getNombre()}"></td>
+            <td th:text="${autor.getApellidos()}"></td>
+            <!--<td th:href="@{/mostrarautor(nif = ${autor.getNIF()})}" th:text="'Detalles'"></td>
+            <td th:href="@{/modificarautorform(nif = ${autor.getNIF()})}" th:text="'Modificar'"></td>-->
+        </tr>
+
+    </table>
 </body>
 </html>

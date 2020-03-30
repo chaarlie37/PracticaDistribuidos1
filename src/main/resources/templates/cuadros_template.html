@@ -5,6 +5,22 @@
     <title>Cuadros</title>
 </head>
 <body>
+    <h1>Cuadros</h1>
+    <form action="/buscarcuadro" method="get">
+        Buscar:
+        <input type="text" name="busqueda">
+        <input type="submit" value="Buscar">
+        Buscar por:
+        <select name="criterio">
+            <option value="todo">Todo</option>
+            <option value="titulo">Titulo</option>
+            <option value="descripcion">Descripcion</option>
+            <option value="anyoFinalizacion">AñoFinalizacion</option>
+            <option value="anchura">Anchura</option>
+            <option value="altura">Altura</option>
+            <option value="precio">Precio</option>
+        </select>
+    </form>
     <a href="nuevo_cuadro.html">Añadir cuadro</a>
     <p th:each="cuadro : ${cuadros}">
         <span th:text="${cuadro.getTitulo()}"></span>
