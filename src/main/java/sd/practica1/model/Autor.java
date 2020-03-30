@@ -107,4 +107,13 @@ public class Autor {
     public void setTlf(String tlf) {
         this.telefono = tlf;
     }
+
+    public void agregarCuadro(Cuadro cuadro){
+        cuadros.add(cuadro);
+    }
+
+    @Override
+    public String toString() {
+        return nombre + " " + apellidos;
+    }
 }

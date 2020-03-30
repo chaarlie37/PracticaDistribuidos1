@@ -6,6 +6,7 @@ import sd.practica1.model.Autor;
 import java.util.List;
 
 public interface AutorRepository extends JpaRepository<Autor, Integer> {
+
     Autor findByNIF(String nif);
     List<Autor> findByNombreContainsOrApellidosContainsOrNIFContainsOrAnyoNacimientoContainsOrPaisContainsOrDireccionContainsOrEmailContainsOrTelefonoContainsIgnoreCase(String nombre, String apellidos, String nif, int anyoNacimiento, String pais, String direccion, String email, String telefono);
     List<Autor> findByNombreContainsIgnoreCase(String nombre);

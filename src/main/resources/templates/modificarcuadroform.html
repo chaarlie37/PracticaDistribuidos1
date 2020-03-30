@@ -2,6 +2,8 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,900' rel='stylesheet' type='text/css'>
+    <link href="/css/style.css" rel="stylesheet">
     <title>Nuevo cuadro</title>
 </head>
 <body>
@@ -9,7 +11,9 @@
     <p>Titulo</p>
     <input type="text" name="titulo" th:value="${cuadro.getTitulo()}">
     <p>Autor</p>
-    <input type="text" name="autor" th:value="${cuadro.getAutor()}">
+        <select name="autor">
+           <option th:each="autor : ${autores}" th:value="${autor}" th:text="${autor}" th:selected="${cuadro.getAutor()}"></option>
+        </select>
     <p>Año</p>
     <input type="text" name="anyo" th:value="${cuadro.getAnyoFinalizacion()}">
     <p>Descripción</p>

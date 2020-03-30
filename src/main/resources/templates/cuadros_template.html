@@ -2,6 +2,8 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,900' rel='stylesheet' type='text/css'>
+    <link href="/css/style.css" rel="stylesheet">
     <title>Cuadros</title>
 </head>
 <body>
@@ -21,7 +23,7 @@
             <option value="precio">Precio</option>
         </select>
     </form>
-    <a href="nuevo_cuadro.html">Añadir cuadro</a>
+    <a href="/nuevocuadro">Añadir cuadro</a>
     <p th:each="cuadro : ${cuadros}">
         <span th:text="${cuadro.getTitulo()}"></span>
         <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}" th:text="'Detalles'"></a>

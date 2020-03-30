@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import sd.practica1.model.Autor;
 import org.springframework.web.bind.annotation.RequestParam;
 import sd.practica1.model.Cuadro;
 import sd.practica1.repositories.AutorRepository;
@@ -44,10 +45,42 @@ public class CuadrosController {
     public String modificarCuadroForm(@RequestParam String titulo, Model model){
         Cuadro cuadro = cuadroRepository.findByTitulo(titulo);
         model.addAttribute("cuadro", cuadro);
+        model.addAttribute("autores", autorRepository.findAll());
         return "modificarcuadroform";
     }
 
     @RequestMapping("/guardarcuadro")
+    public String guardarCuadro(Cuadro cuadro, String nombreautor, Model model){
+        Autor a = autorRepository.findByNIF(nombreautor);
+        cuadro.setAutor(a);
+        a.agregarCuadro(cuadro);
+        cuadroRepository.save(cuadro);
+        autorRepository.save(a);
+        return "exito";
+    }
+
+    @RequestMapping("/nuevocuadro")
+    public String nuevoCuadro(Model model){
+        model.addAttribute("autores", autorRepository.findAll());
+        return "nuevo_cuadro";
+    }
+
+    @RequestMapping("/mostrarcuadro")
+    public String mostrarCuadro(@RequestParam String titulo, Model model){
+        Cuadro cuadro = cuadroRepository.findByTitulo(titulo);
+        model.addAttribute("cuadro", cuadro);
+        return "mostrarcuadro";
+    }
+
+    /*
+    @RequestMapping("/modificarcuadro")
+    public String modificarCuadro(Integer id, Cuadro nuevo, String autor, Model model){
+        Autor a = autorRepository.findByNIF(autor);
+        cuadro.setAutor(a);
+        a.agregarCuadro(cuadro);
+        cuadroRepository.save(cuadro);
+        autorRepository.save(a);
+        return "exito";
     public String guardarCuadro(Cuadro cuadro, Model model){
         if(cuadroRepository.findByTitulo(cuadro.getTitulo()) == null) {
             cuadroRepository.save(cuadro);
@@ -68,12 +101,7 @@ public class CuadrosController {
     }
 
 
-    @RequestMapping("/mostrarcuadro")
-    public String mostrarCuadro(@RequestParam String titulo, Model model){
-        Cuadro cuadro = cuadroRepository.findByTitulo(titulo);
-        model.addAttribute("cuadro", cuadro);
-        return "mostrarcuadro";
-    }
+*/
 
     @RequestMapping("/buscarcuadro")
     public String buscarCuadro(String busqueda, String criterio, Model model){

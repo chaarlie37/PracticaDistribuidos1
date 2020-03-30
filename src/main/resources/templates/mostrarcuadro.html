@@ -2,10 +2,13 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,900' rel='stylesheet' type='text/css'>
+    <link href="/css/style.css" rel="stylesheet">
     <title>Cuadro</title>
 </head>
 <body>
     <p th:text="'Título:' + ${cuadro.getTitulo()}"></p>
+    <!-- TODO: PONER LINK PARA MOSTRAR EL AUTOR -->
     <p th:text="'Autor:' + ${cuadro.getAutor()}"></p>
     <p th:text="'Año:' + ${cuadro.getAnyoFinalizacion()}"></p>
     <p th:text="'Descripción:' + ${cuadro.getDescripcion()}"></p>

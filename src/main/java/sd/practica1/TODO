@@ -1,5 +1,5 @@
 - Detalles y modificar de Autores y Cuadros        LIDIA
-- Lista de autores al crear y modificar cuadros    CARLOS
+- Lista de autores al crear y modificar cuadros    CARLOS  ---------- HECHO
 - Busquedas en cuadros y autores                   FRAN
 
 
@@ -12,3 +12,6 @@ TABLAS:
 
 - Cuadros     CARLOS
     Titulo       Autor(Nombre)      Año       Precio       Detalles        Modificar
+
+
+- Falta poner link para mostrar el autor en el mostrar cuadro
