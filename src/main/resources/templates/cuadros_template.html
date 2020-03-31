@@ -2,32 +2,70 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,900' rel='stylesheet' type='text/css'>
     <link href="/css/style.css" rel="stylesheet">
     <title>Cuadros</title>
 </head>
 <body>
+    <div class="container">
     <h1>Cuadros</h1>
     <form action="/buscarcuadro" method="get">
-        Buscar:
-        <input type="text" name="busqueda">
-        <input type="submit" value="Buscar">
-        Buscar por:
-        <select name="criterio">
-            <option value="todo">Todo</option>
-            <option value="titulo">Titulo</option>
-            <option value="descripcion">Descripcion</option>
-            <option value="anyoFinalizacion">AñoFinalizacion</option>
-            <option value="anchura">Anchura</option>
-            <option value="altura">Altura</option>
-            <option value="precio">Precio</option>
-        </select>
+        <div class="input-group">
+            <div class="barra busqueda">
+                <input type="text" name="busqueda" class="form-control" placeholder="Buscar...">
+            </div>
+            <input type="submit" value="Buscar" class="btn btn-primary">
+        </div>
+        <br>
+            Buscar por:
+            <select name="criterio" class="custom-select">
+                <option value="todo">Todo</option>
+                <option value="titulo">Titulo</option>
+                <option value="descripcion">Descripcion</option>
+                <option value="anyoFinalizacion">AñoFinalizacion</option>
+                <option value="anchura">Anchura</option>
+                <option value="altura">Altura</option>
+                <option value="precio">Precio</option>
+            </select>
     </form>
-    <a href="/nuevocuadro">Añadir cuadro</a>
-    <p th:each="cuadro : ${cuadros}">
-        <span th:text="${cuadro.getTitulo()}"></span>
-        <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}" th:text="'Detalles'"></a>
-        <a th:href="@{/modificarcuadroform(titulo = ${cuadro.getTitulo()})}" th:text="'Modificar'"></a>
-    </p>
+
+
+    <br>
+
+    <a href="nuevo_cuadro.html" class="btn btn-primary">Añadir cuadro</a>
+    <br>
+    <br>
+    <div class="limiter">
+        <div class="wrap-table100">
+            <div class="table100">
+                <table>
+                    <thead>
+                    <tr class="table100-head">
+                        <th class="column1">Titulo</th>
+                        <th class="column2">Precio</th>
+                        <th class="column3"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="cuadro : ${cuadros}">
+                        <td>
+                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                                <div th:text="${cuadro.getTitulo()}" class="column1"></div>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                                <div th:text="${cuadro.getPrecio()}" class="column2"></div>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{/modificarcuadroform(titulo = ${cuadro.getTitulo()})}" th:text="Modificar"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
 </body>
 </html>

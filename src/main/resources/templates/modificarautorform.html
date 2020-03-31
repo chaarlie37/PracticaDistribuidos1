@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,900' rel='stylesheet' type='text/css'>
+    <link href="/css/style.css" rel="stylesheet">
+    <title>Nuevo autor</title>
+</head>
+<body>
+    <form th:action="@{/modificarautor(id = ${autor.getId()})}" method="post">
+    <p>Nombre: </p>
+    <input type="text" name="nombre" th:value="${autor.getNombre()}">
+    <p>Apellidos: </p>
+    <input type="text" name="apellidos" th:value="${autor.getApellidos()}">
+    <p>NIF: </p>
+    <input type="text" name="nif" th:value="${autor.getNIF()}">
+    <p>Año de nacimiento: </p>
+    <input type="text" name="anyo" th:value="${autor.getAnyoNacimiento()}">
+    <p>Pais: </p>
+    <input type="text" name="pais" th:value="${autor.getPais()}">
+    <p>Dirección: </p>
+    <input type="text" name="direccion" th:value="${autor.getDireccion()}">
+    <p>Email: </p>
+    <input type="text" name="email" th:value="${autor.getEmail()}">
+    <p>Teléfono: </p>
+    <input type="text" name="tlf" th:value="${autor.getTlf()}">
+    <input type="submit" value="Guardar">
+   <!-- <p>Cuadros: </p>
+        <select name="titulo">
+            <option th:each="cuadro: {cuadros}" th:value="${cuadro.getTitulo()}" th:text="{cuadro}" th:selected="{cuadro.getAutor()}"></option>
+        </select>
+-->
+    </form>
+
+</body>
+</html>

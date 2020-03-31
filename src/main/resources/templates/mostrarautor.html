@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Autor</title>
+</head>
+<body>
+    <p th:text="'Título:' + ${cuadro.getTitulo()}"></p>
+    <p th:text="'Nombre:' + ${autor.getNombre()}"></p>
+    <p th:text="'Apellidos:' + ${autor.getApellidos()}"></p>
+    <p th:text="'NIF:' + ${autor.getNIF()}"></p>
+    <p th:text="'Año de nacimiento:' + ${autor.getAnyoNacimiento()}"></p>
+    <p th:text="'Pais:' + ${autor.getPais()}"></p>
+    <p th:text="'Direccion:' + ${autor.getDireccion()}"></p>
+    <p th:text="'Email:' + ${autor.getEmail()}"></p>
+    <p th:text="'Telefono: ' + ${autor.getTlf}}"></p>
+<!-- MOSTRAR LOS CUADROS QUE REALIZA -->
+</body>
+</html>

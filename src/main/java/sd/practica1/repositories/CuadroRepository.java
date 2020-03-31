@@ -7,7 +7,6 @@ import sd.practica1.model.Cuadro;
 import java.util.List;
 
 public interface CuadroRepository extends JpaRepository<Cuadro, Integer> {
-
     Cuadro findByTitulo(String titulo);
     List<Cuadro> findByAnyoFinalizacion(int anyoFinalizacion);
     List<Cuadro> findByAnchura(float anchura);

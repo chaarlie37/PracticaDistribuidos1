@@ -2,48 +2,78 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <title>Autores</title>
 </head>
 <body>
+    <div class="container">
     <h1>Autores</h1>
     <form action="/buscarautor" method="get">
-        <p>
-            Buscar:
-            <input type="text" name="busqueda">
-            <input type="submit" value="Buscar">
+        <div class="input-group">
+            <div class="barra busqueda">
+                <input type="text" name="busqueda" class="form-control" placeholder="Buscar...">
+            </div>
+            <input type="submit" value="Buscar" class="btn btn-primary">
+        </div>
+        <br>
             Buscar por:
-            <select name="criterio">
+            <select name="criterio" class="custom-select">
                 <option value="todo">Todo</option>
                 <option value="nombre">Nombre</option>
                 <option value="apellidos">Apellidos</option>
                 <option value="nif">NIF</option>
-                <option value="anyoNacimiento">AñoNacimiento</option>
+                <option value="anyoNacimiento">Año de nacimiento</option>
                 <option value="pais">Pais</option>
                 <option value="direccion">Direccion</option>
                 <option value="email">Email</option>
                 <option value="telefono">Telefono</option>
             </select>
-        </p>
     </form>
-    <a href="nuevo_autor.html">Añadir autor</a>
-    <table class="table">
-        <tr>
-            <th>NIF</th>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Detalles</th>
-            <th>Modificar</th>
-        </tr>
-        <tr th:each="autor : ${autores}">
-            <td th:text="${autor.getNIF()}"> </td>
-            <td th:text="${autor.getNombre()}"></td>
-            <td th:text="${autor.getApellidos()}"></td>
-            <!--<td th:href="@{/mostrarautor(nif = ${autor.getNIF()})}" th:text="'Detalles'"></td>
-            <td th:href="@{/modificarautorform(nif = ${autor.getNIF()})}" th:text="'Modificar'"></td>-->
-        </tr>
 
-    </table>
+    <br>
+
+    <a href="nuevo_autor.html" class="btn btn-primary">Añadir autor</a>
+
+    <br>
+    <br>
+    <div class="limiter">
+        <div class="wrap-table100">
+            <div class="table100">
+                <table>
+                    <thead>
+                    <tr class="table100-head">
+                        <th class="column1">NIF</th>
+                        <th class="column2">Nombre</th>
+                        <th class="column3">Apellidos</th>
+                        <th class="column4"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="autor : ${autores}">
+                        <td>
+                            <a th:href="@{/mostrarautor(nif = ${autor.getNIF()})}">
+                                <div th:text="${autor.getNIF()}" class="column1"></div>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{/mostrarautor(nif = ${autor.getNIF()})}">
+                                <div th:text="${autor.getNombre()}" class="column2"></div>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{/mostrarautor(nif = ${autor.getNIF()})}">
+                                <div th:text="${autor.getApellidos()}" class="column3"></div>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{/modificarautorform(nif = ${autor.getNIF()})}" th:text="Modificar"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
 </body>
 </html>

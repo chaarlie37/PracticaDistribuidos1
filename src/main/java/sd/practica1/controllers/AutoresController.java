@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import sd.practica1.model.Autor;
+
 import sd.practica1.repositories.AutorRepository;
+
 
 
 import javax.annotation.PostConstruct;
@@ -18,6 +21,7 @@ public class AutoresController {
 
     @Autowired
     private AutorRepository autorRepository;
+
 
     @PostConstruct
     public void init(){
@@ -53,6 +57,26 @@ public class AutoresController {
         }
     }
 
+    @RequestMapping("/modificarautorform")
+    public String modificarAutorForm(@RequestParam String nif, Model model){
+        Autor autor = autorRepository.findByNIF(nif);
+        model.addAttribute("autor", autor);
+        return "modificarautorform";
+    }
+
+    @RequestMapping("/modificarautor")
+    public String modificarAutor(@RequestParam Integer id,Autor nuevo, Model model){
+        nuevo.setId_autor(id);
+        autorRepository.save(nuevo);
+        return "exito";
+    }
+
+    @RequestMapping("/mostrarautor")
+    public String mostrarAutor(@RequestParam String nif, Model model){
+        Autor autor = autorRepository.findByNIF(nif);
+        model.addAttribute("autor", autor);
+        return "mostrarautor";
+    }
     @RequestMapping("/buscarautor")
     public String buscarAutor(String busqueda, String criterio, Model model){
         List<Autor> lista = null;
