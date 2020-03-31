@@ -105,4 +105,10 @@ public class Cuadro {
         this.autor = autor;
     }
 
+    public String vendido_texto(){
+        if(vendido)
+            return "Si";
+        else
+            return "No";
+    }
 }

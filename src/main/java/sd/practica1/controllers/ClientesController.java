@@ -105,5 +105,18 @@ public class ClientesController {
         }
     }
 
+    @RequestMapping("/mostrarclientesorden")
+    public String mostrarclientesorden(@RequestParam String orden, Model model){
+        List<Cliente> lista = null;
+        switch (orden){
+            case "nombreAsc" : lista = clienteRepository.findAllByOrderByNombreAsc(); break;
+            case "nombreDesc" : lista = clienteRepository.findAllByOrderByNombreDesc(); break;
+            case "apellidosAsc" : lista = clienteRepository.findAllByOrderByApellidosAsc(); break;
+            case "apellidosDesc" : lista = clienteRepository.findAllByOrderByApellidosDesc(); break;
+        }
+        model.addAttribute("clientes", lista);
+        return "clientes_template";
+    }
+
 
 }

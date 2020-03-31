@@ -2,10 +2,14 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <title>Autor</title>
 </head>
 <body>
-    <p th:text="'Título:' + ${cuadro.getTitulo()}"></p>
+
+<div class="container">
+
     <p th:text="'Nombre:' + ${autor.getNombre()}"></p>
     <p th:text="'Apellidos:' + ${autor.getApellidos()}"></p>
     <p th:text="'NIF:' + ${autor.getNIF()}"></p>
@@ -13,7 +17,54 @@
     <p th:text="'Pais:' + ${autor.getPais()}"></p>
     <p th:text="'Direccion:' + ${autor.getDireccion()}"></p>
     <p th:text="'Email:' + ${autor.getEmail()}"></p>
-    <p th:text="'Telefono: ' + ${autor.getTlf}}"></p>
+    <p th:text="'Telefono: ' + ${autor.getTlf()}"></p>
+
+
+    <div class="limiter">
+        <div class="wrap-table100">
+            <div class="table100">
+                <table>
+                    <thead>
+                    <tr class="table100-head">
+                        <th class="column1">Titulo</th>
+                        <th class="column2">Año</th>
+                        <th class="column3">Vendido</th>
+                        <th class="column4">Precio</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="cuadro : ${autor.getCuadros()}">
+                        <td class="column1">
+                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                                <div th:text="${cuadro.getTitulo()}" class="column1"></div>
+                            </a>
+                        </td>
+                        <td class="column1">
+                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                                <div th:text="${cuadro.getAnyoFinalizacion()}" class="column1"></div>
+                            </a>
+                        </td>
+                        <td class="column1">
+                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                                <div th:text="${cuadro.vendido_texto()}" class="column1"></div>
+                            </a>
+                        </td>
+                        <td class="column1">
+                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                                <div th:text="${cuadro.getPrecio()}" class="column1"></div>
+                            </a>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <!-- MOSTRAR LOS CUADROS QUE REALIZA -->
 </body>
 </html>

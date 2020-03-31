@@ -8,7 +8,7 @@ public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id_autor;
+    private Integer id;
 
     private String nombre;
     private String apellidos;
@@ -36,12 +36,12 @@ public class Autor {
         this.telefono=tlf;
     }
 
-    public Integer getId_autor() {
-        return id_autor;
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_autor(Integer id_autor) {
-        this.id_autor = id_autor;
+    public void setId(Integer id_autor) {
+        this.id = id_autor;
     }
 
     public String getNombre() {
@@ -106,6 +106,10 @@ public class Autor {
 
     public void setTlf(String tlf) {
         this.telefono = tlf;
+    }
+
+    public Collection<Cuadro> getCuadros() {
+        return cuadros;
     }
 
     public void agregarCuadro(Cuadro cuadro){

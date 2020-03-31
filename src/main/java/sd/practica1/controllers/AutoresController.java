@@ -12,7 +12,6 @@ import sd.practica1.repositories.AutorRepository;
 
 
 import javax.annotation.PostConstruct;
-import java.text.NumberFormat;
 import java.util.List;
 
 
@@ -66,7 +65,7 @@ public class AutoresController {
 
     @RequestMapping("/modificarautor")
     public String modificarAutor(@RequestParam Integer id,Autor nuevo, Model model){
-        nuevo.setId_autor(id);
+        nuevo.setId(id);
         autorRepository.save(nuevo);
         return "exito";
     }

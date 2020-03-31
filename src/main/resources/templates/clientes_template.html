@@ -41,30 +41,39 @@
             <div class="barra-busqueda">
                 <input type="text" name="busqueda" class="form-control"  placeholder="Buscar...">
             </div>
-            <input type="submit" value="Buscar" class="btn btn-primary">
+            <div class="buscar-por">
+                <select name="criterio" class="custom-select">
+                    <option value="nombre" selected="selected">Buscar por...</option>
+                    <option value="nombre">Nombre</option>
+                    <option value="apellidos">Apellidos</option>
+                    <option value="nif">NIF</option>
+                    <option value="direccion">Direccion</option>
+                    <option value="email">e-mail</option>
+                    <option value="telefono">Telefono</option>
+                </select>
+            </div>
+            <input type="submit" value=" Buscar " class="btn btn-primary">
         </div>
-        <br>
-
-        Buscar por:
-        <select name="criterio" class="custom-select">
-            <option value="todo">Todo</option>
-            <option value="nombre">Nombre</option>
-            <option value="apellidos">Apellidos</option>
-            <option value="nif">NIF</option>
-            <option value="direccion">Direccion</option>
-            <option value="email">e-mail</option>
-            <option value="telefono">Telefono</option>
-        </select>
-
-
     </form>
 
-    <br>
+    <div class="encima-tabla">
+        <a href="nuevo_cliente.html" class="btn btn-primary">Añadir cliente</a>
+        <form action="/mostrarclientesorden" method="get">
+            <div class="ordenar-por-group">
+                <div class="ordenar-por">
+                    <select name="orden" class="custom-select">
+                        <option value="" selected="selected">Ordenar por...</option>
+                        <option value="nombreAsc">Nombre (A-Z)</option>
+                        <option value="nombreDesc">Nombre (Z-A)</option>
+                        <option value="apellidosAsc">Apellidos (A-Z)</option>
+                        <option value="apellidosDesc">Apellidos (Z-A)</option>
+                    </select>
+                </div>
+                <input type="submit" value="Ordenar" class="btn btn-secondary">
+            </div>
 
-    <a href="nuevo_cliente.html" class="btn btn-primary">Añadir cliente</a>
-
-    <br>
-    <br>
+        </form>
+    </div>
 
     <div class="limiter">
             <div class="wrap-table100">
