@@ -10,6 +10,7 @@ import sd.practica1.model.Cliente;
 import sd.practica1.repositories.ClienteRepository;
 
 import javax.annotation.PostConstruct;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,7 +78,6 @@ public class ClientesController {
         List<Cliente> lista = null;
 
         switch (criterio){
-            case "todo": lista = clienteRepository.findByNombreContainsOrApellidosContainsOrNIFContainsOrDireccionContainsOrEmailContainsOrTelefonoContainsIgnoreCase(busqueda, busqueda, busqueda, busqueda, busqueda, busqueda); break;
             case "nombre" : lista = clienteRepository.findByNombreContainsIgnoreCase(busqueda); break;
             case "apellidos" : lista = clienteRepository.findByApellidosContainsIgnoreCase(busqueda); break;
             case "nif" : lista = clienteRepository.findByNIFContainsIgnoreCase(busqueda); break;
@@ -106,14 +106,15 @@ public class ClientesController {
     }
 
     @RequestMapping("/mostrarclientesorden")
-    public String mostrarclientesorden(@RequestParam String orden, Model model){
-        List<Cliente> lista = null;
+    public String mostrarclientesorden(@RequestParam(value = "lista") List<Cliente> lista, @RequestParam String orden, Model model){
+
         switch (orden){
-            case "nombreAsc" : lista = clienteRepository.findAllByOrderByNombreAsc(); break;
-            case "nombreDesc" : lista = clienteRepository.findAllByOrderByNombreDesc(); break;
-            case "apellidosAsc" : lista = clienteRepository.findAllByOrderByApellidosAsc(); break;
-            case "apellidosDesc" : lista = clienteRepository.findAllByOrderByApellidosDesc(); break;
+            case "nombreAsc" : Cliente.ordenarClientesNombreAsc(lista); break;
+            case "nombreDesc" : Cliente.ordenarClientesNombreDesc(lista); break;
+            case "apellidosAsc" : Cliente.ordenarClientesApellidoAsc(lista); break;
+            case "apellidosDesc" : Cliente.ordenarClientesApellidoDesc(lista); break;
         }
+
         model.addAttribute("clientes", lista);
         return "clientes_template";
     }

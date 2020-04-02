@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-grid.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
+    <link href="css/bootstrap/business.css" rel="stylesheet">
+    <link href="css/bootstrap/table.css" rel="stylesheet">
     <title>Clientes</title>
 </head>
 <body>
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Inicio</a>
+        <a class="navbar-brand" href="index.html">Gestion de Base de Datos</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/clientes">Clientes</a>
+                    <a class="nav-link" href="/index.html">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/cuadros">Cuadros</a>
@@ -29,14 +34,12 @@
     </div>
 </nav>
 
-<br><br><br><br>
 
 <div class="container">
 
-    <h1>Clientes</h1>
-    <br>
-    <form action="/buscarcliente" method="get">
+    <h1 class="mt-4">Clientes</h1>
 
+    <form action="/buscarcliente" method="get">
         <div class="input-group">
             <div class="barra-busqueda">
                 <input type="text" name="busqueda" class="form-control"  placeholder="Buscar...">
@@ -58,12 +61,12 @@
 
     <div class="encima-tabla">
         <a href="nuevo_cliente.html" class="btn btn-primary">Añadir cliente</a>
-        <form action="/mostrarclientesorden" method="get">
+        <form th:action="@{/mostrarclientesorden(lista = ${clientes})}" method="post">
             <div class="ordenar-por-group">
                 <div class="ordenar-por">
                     <select name="orden" class="custom-select">
                         <option value="" selected="selected">Ordenar por...</option>
-                        <option value="nombreAsc">Nombre (A-Z)</option>
+                        <option value="nombreAsc" type="submit">Nombre (A-Z)</option>
                         <option value="nombreDesc">Nombre (Z-A)</option>
                         <option value="apellidosAsc">Apellidos (A-Z)</option>
                         <option value="apellidosDesc">Apellidos (Z-A)</option>

@@ -4,9 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Entity
-public class Cliente {
+public class Cliente{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -86,5 +89,52 @@ public class Cliente {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public static void ordenarClientesNombreAsc(List<Cliente> lista){
+        Collections.sort(lista, new Comparator<Cliente>() {
+            @Override
+            public int compare(Cliente c1, Cliente c2) {
+                return c1.getNombre().compareTo(c2.getNombre());
+            }
+        });
+    }
+
+    public static void ordenarClientesNombreDesc(List<Cliente> lista){
+        Collections.sort(lista, new Comparator<Cliente>() {
+            @Override
+            public int compare(Cliente c1, Cliente c2) {
+                return - c1.getNombre().compareTo(c2.getNombre());
+            }
+        });
+    }
+
+    public static void ordenarClientesApellidoAsc(List<Cliente> lista){
+        Collections.sort(lista, new Comparator<Cliente>() {
+            @Override
+            public int compare(Cliente c1, Cliente c2) {
+                return c1.getApellidos().compareTo(c2.getApellidos());
+            }
+        });
+    }
+
+    public static void ordenarClientesApellidoDesc(List<Cliente> lista){
+        Collections.sort(lista, new Comparator<Cliente>() {
+            @Override
+            public int compare(Cliente c1, Cliente c2) {
+                return - c1.getApellidos().compareTo(c2.getApellidos());
+            }
+        });
+    }
+
+    @Override
+    public String toString() {
+        return id.toString();
+    }
+
+
+    @Override
+    public int hashCode() {
+        return 0;
     }
 }

@@ -2,25 +2,87 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,900' rel='stylesheet' type='text/css'>
-    <link href="/css/style.css" rel="stylesheet">
-    <title>Nuevo cliente</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-grid.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
+    <link href="css/bootstrap/business.css" rel="stylesheet">
+    <title>Modificar cliente</title>
 </head>
 <body>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Gestion de Base de Datos</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/clientes">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cuadros">Cuadros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/autores">Autores</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h2 class="mt-3 header-formulario">Modificar cliente</h2>
+
     <form th:action="@{/modificarcliente(id = ${cliente.getId()})}" method="post">
-        <p>Nombre</p>
-        <input type="text" name="nombre" th:value="${cliente.getNombre()}">
-        <p>Apellidos</p>
-        <input type="text" name="apellidos" th:value="${cliente.getApellidos()}">
-        <p>NIF</p>
-        <input type="text" name="NIF" th:value="${cliente.getNIF()}">
-        <p>Direccion</p>
-        <input type="text" name="direccion" th:value="${cliente.getDireccion()}">
-        <p>Email</p>
-        <input type="text" name="email" th:value="${cliente.getEmail()}">
-        <p>Telefono</p>
-        <input type="text" name="telefono" th:value="${cliente.getTelefono()}">
-        <input type="submit" value="Guardar">
+        <div class="control-group form-group">
+            <div class="controls">
+                <label>Nombre</label>
+                <input type="text" name="nombre" th:value="${cliente.getNombre()}" class="form-control" required>
+            </div>
+        </div>
+        <div class="control-group form-group">
+            <div class="controls">
+                <label>Apellidos</label>
+                <input type="text" name="apellidos" th:value="${cliente.getApellidos()}" class="form-control">
+            </div>
+        </div>
+        <div class="control-group form-group">
+            <div class="controls">
+                <label>NIF</label>
+                <input type="text" name="NIF" th:value="${cliente.getNIF()}" class="form-control">
+            </div>
+        </div>
+        <div class="control-group form-group">
+            <div class="controls">
+                <label>Direccion</label>
+                <input type="text" name="direccion" th:value="${cliente.getDireccion()}" class="form-control">
+            </div>
+        </div>
+        <div class="control-group form-group">
+            <div class="controls">
+                <label>e-mail</label>
+                <input type="text" name="email" th:value="${cliente.getEmail()}" class="form-control">
+            </div>
+        </div>
+        <div class="control-group form-group">
+            <div class="controls">
+                <label>Telefono</label>
+                <input type="text" name="telefono" th:value="${cliente.getTelefono()}" class="form-control">
+            </div>
+        </div>
+        <div class="guardar-cancelar">
+            <input type="submit" value=" Guardar " class="btn btn-primary">
+            <a href="/clientes" class="btn btn-light">Cancelar</a>
+        </div>
+
+
     </form>
+
+
+</div>
+
 </body>
 </html>
