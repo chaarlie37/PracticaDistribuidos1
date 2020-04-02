@@ -84,30 +84,31 @@
                     <table>
                         <thead>
                         <tr class="table100-head">
-                            <th class="column1">NIF</th>
-                            <th class="column2">Nombre</th>
-                            <th class="column3">Apellidos</th>
-                            <th class="column4"></th>
+                            <th class="column1">Nombre</th>
+                            <th class="column2">Apellidos</th>
+                            <th class="column3">NIF</th>
+                            <th class="column6"></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="cliente : ${clientes}">
                             <td>
                                 <a th:href="@{/mostrarcliente(nif = ${cliente.getNIF()})}">
-                                    <div th:text="${cliente.getNIF()}" class="column1"></div>
+                                    <div th:text="${cliente.getNombre()}" class="column1"></div>
                                 </a>
                             </td>
                             <td>
                                 <a th:href="@{/mostrarcliente(nif = ${cliente.getNIF()})}">
-                                    <div th:text="${cliente.getNombre()}" class="column2"></div>
+                                    <div th:text="${cliente.getApellidos()}" class="column2"></div>
                                 </a>
                             </td>
                             <td>
                                 <a th:href="@{/mostrarcliente(nif = ${cliente.getNIF()})}">
-                                    <div th:text="${cliente.getApellidos()}" class="column3"></div>
+                                    <div th:text="${cliente.getNIF()}" class="column3"></div>
                                 </a>
                             </td>
-                            <td class="column4">
+                            <td class="column6">
+                                <img th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" src="../images/baseline_create_black_18dp.png" height="18" width="18">
                                 <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" th:text="'Modificar'"></a>
                             </td>
                         </tr>
