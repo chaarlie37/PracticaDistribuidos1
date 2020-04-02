@@ -108,7 +108,8 @@
                                 </a>
                             </td>
                             <td class="column6">
-                                <img th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" src="../images/baseline_create_black_18dp.png" height="18" width="18">
+
+                                <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" ><img src="../images/baseline_create_black_18dp.png" height="18" width="18"></a>
                                 <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" th:text="'Modificar'"></a>
                             </td>
                         </tr>
