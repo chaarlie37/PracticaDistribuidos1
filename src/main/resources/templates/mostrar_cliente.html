@@ -2,16 +2,75 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,900' rel='stylesheet' type='text/css'>
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-grid.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
+    <link href="css/bootstrap/business.css" rel="stylesheet">
     <title>Cliente</title>
 </head>
 <body>
-    <p th:text="'Nombre: ' + ${cliente.getNombre()}"></p>
-    <p th:text="'Apellidos: ' + ${cliente.getApellidos()}"></p>
-    <p th:text="'NIF: ' + ${cliente.getNIF()}"></p>
-    <p th:text="'Direccion: ' + ${cliente.getDireccion()}"></p>
-    <p th:text="'e-mail: ' + ${cliente.getEmail()}"></p>
-    <p th:text="'Telefono: ' + ${cliente.getTelefono()}"></p>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Inicio</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/clientes">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cuadros">Cuadros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/autores">Autores</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="mt-3">Cliente</h1>
+    <h2 th:text="${cliente.getNombre().toUpperCase()} + ' ' + ${cliente.getApellidos().toUpperCase()}"></h2>
+    <div class="zona-mostrar">
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Nombre</p>
+            <p th:text="${cliente.getNombre()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Apellidos</p>
+            <p th:text="${cliente.getApellidos()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">NIF</p>
+            <p th:text="${cliente.getNIF()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Direccion</p>
+            <p th:text="${cliente.getDireccion()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">e-mail</p>
+            <p th:text="${cliente.getEmail()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Telefono</p>
+            <p th:text="${cliente.getTelefono()}" class="atributo"></p>
+        </div>
+        <div class="boton-modificar">
+            <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" ><img src="../images/baseline_create_black_18dp.png" height="18" width="18"></a>
+            <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" th:text="'Modificar'" class="btn btn-primary"></a>
+
+        </div>
+
+    </div>
+</div>
+
+
+
 </body>
 </html>

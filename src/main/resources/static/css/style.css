@@ -1,3 +1,4 @@
+
 .encima-tabla {
     margin-top: 2rem;
     margin-bottom: 0.5rem;
@@ -37,3 +38,42 @@
     justify-content: space-between;
     width: 12rem;
 }
+
+.zona-mostrar{
+    margin-top: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    padding-left: 2rem;
+    display: block;
+    background-color: #ededed;
+    border-style: solid;
+    border-width: thin;
+    border-color: #cbcbcb;
+    border-radius: 10px;
+    width: 100%;
+    height: fit-content;
+}
+
+.atributo-mostrar{
+    line-height: 0.5rem;
+    padding-bottom: 1rem;
+
+}
+
+.nombre-atributo{
+    font-weight: 300;
+    color: var(--gray-dark);
+}
+
+.atributo{
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.boton-modificar {
+    float: right;
+    position: relative;
+    bottom: 4rem;
+    padding-right: 2rem;
+}
+
