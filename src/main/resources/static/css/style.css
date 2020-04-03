@@ -45,7 +45,7 @@
     padding-bottom: 0.5rem;
     padding-left: 2rem;
     display: block;
-    background-color: #ededed;
+    background-color: #f5f5f5;
     border-style: solid;
     border-width: thin;
     border-color: #cbcbcb;
@@ -70,10 +70,28 @@
     font-size: 1.3rem;
 }
 
-.boton-modificar {
+.boton-modificar-mostrar {
     float: right;
     position: relative;
     bottom: 4rem;
     padding-right: 2rem;
 }
 
+.texto-boton{
+    color: white;
+
+}
+
+.texto-boton:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.titulo-cabecera{
+    display: flex;
+    justify-content: space-between;
+}
+
+.boton-volver{
+    margin-top: 1.6rem;
+}
