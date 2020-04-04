@@ -81,6 +81,7 @@
             <p class="nombre-atributo">Teléfono</p>
             <p th:text="${autor.getTlf()}" class="atributo"></p>
         </div>
+
         <div class="boton-modificar-mostrar">
             <div class="btn btn-primary">
                 <a th:href="@{/modificarautorform(nif = ${autor.getNIF()})}" ><img src="../images/round_create_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
@@ -89,8 +90,8 @@
         </div>
     </div>
 
-
- <div class="limiter">
+    <p class="nombre-atributo">Cuadros de este autor:</p>
+    <div class="limiter" th:unless="${autor.getCuadros().isEmpty()}">
         <div class="wrap-table100">
             <div class="table100">
                 <table>
@@ -109,19 +110,19 @@
                                 <div th:text="${cuadro.getTitulo()}" class="column1"></div>
                             </a>
                         </td>
-                        <td class="column1">
+                        <td class="column2">
                             <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
-                                <div th:text="${cuadro.getAnyoFinalizacion()}" class="column1"></div>
+                                <div th:text="${cuadro.getAnyoFinalizacion()}" class="column2"></div>
                             </a>
                         </td>
-                        <td class="column1">
+                        <td class="column3">
                             <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
-                                <div th:text="${cuadro.vendido_texto()}" class="column1"></div>
+                                <div th:text="${cuadro.vendido_texto()}" class="column3"></div>
                             </a>
                         </td>
-                        <td class="column1">
+                        <td class="column4">
                             <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
-                                <div th:text="${cuadro.getPrecio()}" class="column1"></div>
+                                <div th:text="${cuadro.getPrecio()}" class="column4"></div>
                             </a>
                         </td>
 
@@ -131,6 +132,8 @@
             </div>
         </div>
     </div>
+    <p th:text="${autor.getCuadros().isEmpty()} ? 'Este autor no tiene cuadros.'"></p>
+
 </div>
 
 <!-- MOSTRAR LOS CUADROS QUE REALIZA -->
