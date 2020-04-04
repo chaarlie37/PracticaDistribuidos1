@@ -2,25 +2,95 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap/table.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-grid.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
+    <link href="css/bootstrap/business.css" rel="stylesheet">
     <title>Autor</title>
 </head>
 <body>
 
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Inicio</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/clientes">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cuadros">Cuadros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/autores">Autores</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="container">
+    <div class="titulo-cabecera">
+        <h1 class="mt-3 mt-4">
+            Autor <br>
+            <small th:text="${autor.getNombre().toUpperCase()} + ' ' + ${autor.getApellidos().toUpperCase()} "></small>
+        </h1>
+        <div class="boton-volver">
+            <div class="btn btn-secondary">
+                <a href="/autores"><img src="../images/round_arrow_back_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
+                <a href="/autores" th:text="'Volver'" class="texto-boton"></a>
+            </div>
+        </div>
+    </div>
 
-    <p th:text="'Nombre:' + ${autor.getNombre()}"></p>
-    <p th:text="'Apellidos:' + ${autor.getApellidos()}"></p>
-    <p th:text="'NIF:' + ${autor.getNIF()}"></p>
-    <p th:text="'Año de nacimiento:' + ${autor.getAnyoNacimiento()}"></p>
-    <p th:text="'Pais:' + ${autor.getPais()}"></p>
-    <p th:text="'Direccion:' + ${autor.getDireccion()}"></p>
-    <p th:text="'Email:' + ${autor.getEmail()}"></p>
-    <p th:text="'Telefono: ' + ${autor.getTlf()}"></p>
+    <div class="zona-mostrar">
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Nombre</p>
+            <p th:text="${autor.getNombre()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Apellidos</p>
+            <p th:text="${autor.getApellidos()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">NIF</p>
+            <p th:text="${autor.getNIF()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Año de nacimiento</p>
+            <p th:text="${autor.getAnyoNacimiento()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">País</p>
+            <p th:text="${autor.getPais()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Dirección</p>
+            <p th:text="${autor.getDireccion()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Email</p>
+            <p th:text="${autor.getEmail()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Teléfono</p>
+            <p th:text="${autor.getTlf()}" class="atributo"></p>
+        </div>
+        <div class="boton-modificar-mostrar">
+            <div class="btn btn-primary">
+                <a th:href="@{/modificarautorform(nif = ${autor.getNIF()})}" ><img src="../images/round_create_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
+                <a th:href="@{/modificarautorform(nif = ${autor.getNIF()})}" th:text="'Modificar'" class="texto-boton"></a>
+            </div>
+        </div>
+    </div>
 
 
-    <div class="limiter">
+ <div class="limiter">
         <div class="wrap-table100">
             <div class="table100">
                 <table>
@@ -62,8 +132,6 @@
         </div>
     </div>
 </div>
-
-
 
 <!-- MOSTRAR LOS CUADROS QUE REALIZA -->
 </body>

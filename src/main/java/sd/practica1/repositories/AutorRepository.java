@@ -2,6 +2,7 @@ package sd.practica1.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import sd.practica1.model.Autor;
+import sd.practica1.model.Cliente;
 
 import java.util.List;
 
@@ -17,4 +18,8 @@ public interface AutorRepository extends JpaRepository<Autor, Integer> {
     List<Autor> findByDireccionContainsIgnoreCase(String direccion);
     List<Autor> findByEmailContainsIgnoreCase(String email);
     List<Autor> findByTelefonoContainsIgnoreCase(String telefono);
+    List<Autor> findAllByOrderByNombreAsc();
+    List<Autor> findAllByOrderByNombreDesc();
+    List<Autor> findAllByOrderByApellidosAsc();
+    List<Autor> findAllByOrderByApellidosDesc();
 }

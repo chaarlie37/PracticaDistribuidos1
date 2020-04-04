@@ -2,6 +2,9 @@ package sd.practica1.model;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Entity
 public class Autor {
@@ -116,8 +119,46 @@ public class Autor {
         cuadros.add(cuadro);
     }
 
-    @Override
-    public String toString() {
-        return nombre + " " + apellidos;
+    public static void ordenarAutoresNombresAsc(List<Autor> lista){
+        Collections.sort(lista, new Comparator<Autor>() {
+            @Override
+            public int compare(Autor a1, Autor a2) {
+                return a1.getNombre().compareTo(a2.getNombre());
+            }
+        });
     }
+
+    public static void ordenarAutoresNombresDesc(List<Autor> lista){
+        Collections.sort(lista, new Comparator<Autor>() {
+            @Override
+            public int compare(Autor a1, Autor a2) {
+                return - a1.getNombre().compareTo(a2.getNombre());
+            }
+        });
+    }
+
+    public static void ordenarAutoresApellidosAsc(List<Autor> lista){
+        Collections.sort(lista, new Comparator<Autor>() {
+            @Override
+            public int compare(Autor a1, Autor a2) {
+                return a1.getApellidos().compareTo(a2.getApellidos());
+            }
+        });
+    }
+
+    public static void ordenarAutoresApellidosDesc(List<Autor> lista){
+        Collections.sort(lista, new Comparator<Autor>() {
+            @Override
+            public int compare(Autor a1, Autor a2) {
+                return a1.getApellidos().compareTo(a2.getApellidos());
+            }
+        });
+    }
+
+
+    @Override
+    public String toString() { return id.toString(); }
+
+    @Override
+    public int hashCode() { return 0; }
 }

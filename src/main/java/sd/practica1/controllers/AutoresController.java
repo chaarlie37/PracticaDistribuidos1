@@ -81,17 +81,6 @@ public class AutoresController {
         List<Autor> lista = null;
 
         switch (criterio){
-            case "todo":
-                try {
-                    Integer n = Integer.parseInt(busqueda);
-                    if ((n < 2020))
-                        lista = autorRepository.findByNombreContainsOrApellidosContainsOrNIFContainsOrAnyoNacimientoContainsOrPaisContainsOrDireccionContainsOrEmailContainsOrTelefonoContainsIgnoreCase(busqueda, busqueda, busqueda, n, busqueda, busqueda, busqueda, busqueda);
-                }
-                    catch(Exception e) {
-                     Integer n = null;
-                    lista= autorRepository.findByNombreContainsOrApellidosContainsOrNIFContainsOrAnyoNacimientoContainsOrPaisContainsOrDireccionContainsOrEmailContainsOrTelefonoContainsIgnoreCase(busqueda, busqueda, busqueda, n, busqueda, busqueda, busqueda, busqueda);
-                }
-                break;
             case "nombre":
                 lista= autorRepository.findByNombreContainsIgnoreCase(busqueda);
                 break;
@@ -132,10 +121,7 @@ public class AutoresController {
         }
         if (lista.isEmpty()){
             String men;
-            if (criterio.equals("todo"))
-                men = "No se ha encontrado ningun autor que coincida con " +  "\"" + busqueda + "\"";
-            else
-                men = "No se ha encontrado ningun autor con " + criterio + " " + "\"" + busqueda + "\"";
+            men = "No se ha encontrado ningun autor con " + criterio + " " + "\"" + busqueda + "\"";
             model.addAttribute("mensaje", men);
             return "error_msg";
         }
@@ -148,9 +134,19 @@ public class AutoresController {
             model.addAttribute("autores", lista);
             return "autores_template";
         }
-
     }
 
+    @RequestMapping("/mostrarautoresorden")
+    public String mostrarautoresorden(@RequestParam(value = "lista")List<Autor> lista, @RequestParam String orden, Model model){
+        switch (orden){
+            case "nombreAsc" : Autor.ordenarAutoresNombresAsc(lista); break;
+            case "nombreDesc" : Autor.ordenarAutoresNombresDesc(lista); break;
+            case "apellidosAsc" : Autor.ordenarAutoresApellidosAsc(lista); break;
+            case "apellidosDesc" : Autor.ordenarAutoresApellidosDesc(lista); break;
+        }
+        model.addAttribute("autores" , lista);
+        return "autores_template";
+    }
 
 }
 
