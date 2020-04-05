@@ -107,7 +107,8 @@ tbody tr:hover {
 }
 
 .column3 {
-    width: 150px;
+    width: 235px;
+    /* 150px por defecto */
 }
 
 .column4 {

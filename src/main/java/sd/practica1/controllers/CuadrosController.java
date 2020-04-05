@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import sd.practica1.model.Autor;
 import org.springframework.web.bind.annotation.RequestParam;
+import sd.practica1.model.Cliente;
 import sd.practica1.model.Cuadro;
 import sd.practica1.repositories.AutorRepository;
 import sd.practica1.repositories.CuadroRepository;
@@ -113,29 +114,27 @@ public class CuadrosController {
 
 
         switch (criterio){
-            case "todo":
-                break;
             case "titulo":
                 lista= cuadroRepository.findByTituloContainsIgnoreCase(busqueda);
                 break;
             case "descripcion":
                 lista=cuadroRepository.findByDescripcionIgnoreCase(busqueda);
                 break;
-            case "anyoFinalizacion":
+            case "anyo":
+                lista=cuadroRepository.findByAnyoFinalizacion(Integer.parseInt(busqueda));
                 break;
             case "anchura":
+                lista=cuadroRepository.findByAnchura(Float.parseFloat(busqueda));
                 break;
             case "altura":
+                lista=cuadroRepository.findByAltura(Float.parseFloat(busqueda));
                 break;
             case "precio":
+                lista=cuadroRepository.findByPrecio(Integer.parseInt(busqueda));
                 break;
         }
         if (lista.isEmpty()){
-            String men;
-            if (criterio.equals("todo"))
-                men = "No se ha encontrado ningun cuadro que coincida con " +  "\"" + busqueda + "\"";
-            else
-                men = "No se ha encontrado ningun cuadro con " + criterio + " " + "\"" + busqueda + "\"";
+            String men = "No se ha encontrado ningun cuadro con " + criterio + " " + "\"" + busqueda + "\"";
             model.addAttribute("mensaje", men);
             return "error_msg";
         }
@@ -149,4 +148,23 @@ public class CuadrosController {
             return "cuadros_template";
         }
     }
+
+
+    @RequestMapping("/mostrarcuadrosorden")
+    public String mostrarclientesorden(@RequestParam(value = "lista") List<Cuadro> lista, @RequestParam String orden, Model model){
+
+        switch (orden){
+            case "tituloAsc" : Cuadro.ordenarCuadrosTituloAsc(lista); break;
+            case "tituloDesc" : Cuadro.ordenarCuadrosTituloDesc(lista); break;
+            case "anyoAsc" : Cuadro.ordenarCuadrosAnyoAsc(lista); break;
+            case "anyoDesc" : Cuadro.ordenarCuadrosAnyoDesc(lista); break;
+            case "precioAsc" : Cuadro.ordenarCuadrosPrecioAsc(lista); break;
+            case "precioDesc" : Cuadro.ordenarCuadrosPrecioDesc(lista); break;
+
+        }
+
+        model.addAttribute("cuadros", lista);
+        return "cuadros_template";
+    }
+
 }

@@ -1,6 +1,12 @@
 package sd.practica1.model;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Entity
 public class Cuadro {
@@ -16,6 +22,9 @@ public class Cuadro {
     private float anchura;
     private float altura;
     private int precio;
+    @ManyToOne
+    private Cliente comprador;
+    private Date fechaCompra;
     @ManyToOne
     @JoinColumn(name = "id_autor")
     private Autor autor;
@@ -110,5 +119,79 @@ public class Cuadro {
             return "Si";
         else
             return "No";
+    }
+
+    public String formato_dimensiones(float dimension){
+        DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
+        decimalFormatSymbols.setDecimalSeparator(',');
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        return decimalFormat.format(dimension);
+    }
+
+    public String altura_formato(){
+        return formato_dimensiones(this.altura);
+    }
+
+    public String anchura_formato(){
+        return formato_dimensiones(this.anchura);
+    }
+
+    public static void ordenarCuadrosTituloAsc(List<Cuadro> lista){
+        Collections.sort(lista, new Comparator<Cuadro>() {
+            @Override
+            public int compare(Cuadro c1, Cuadro c2) {
+                return c1.getTitulo().compareTo(c2.getTitulo());
+            }
+        });
+    }
+
+    public static void ordenarCuadrosTituloDesc(List<Cuadro> lista){
+        Collections.sort(lista, new Comparator<Cuadro>() {
+            @Override
+            public int compare(Cuadro c1, Cuadro c2) {
+                return c2.getTitulo().compareTo(c1.getTitulo());
+            }
+        });
+    }
+
+    public static void ordenarCuadrosAnyoAsc(List<Cuadro> lista){
+        Collections.sort(lista, new Comparator<Cuadro>() {
+            @Override
+            public int compare(Cuadro c1, Cuadro c2) {
+                return c1.getAnyoFinalizacion() - c2.getAnyoFinalizacion();
+            }
+        });
+    }
+
+    public static void ordenarCuadrosAnyoDesc(List<Cuadro> lista){
+        Collections.sort(lista, new Comparator<Cuadro>() {
+            @Override
+            public int compare(Cuadro c1, Cuadro c2) {
+                return c2.getAnyoFinalizacion() - c1.getAnyoFinalizacion();
+            }
+        });
+    }
+
+    public static void ordenarCuadrosPrecioAsc(List<Cuadro> lista){
+        Collections.sort(lista, new Comparator<Cuadro>() {
+            @Override
+            public int compare(Cuadro c1, Cuadro c2) {
+                return c1.getPrecio() - c2.getPrecio();
+            }
+        });
+    }
+
+    public static void ordenarCuadrosPrecioDesc(List<Cuadro> lista){
+        Collections.sort(lista, new Comparator<Cuadro>() {
+            @Override
+            public int compare(Cuadro c1, Cuadro c2) {
+                return c2.getPrecio() - c1.getPrecio();
+            }
+        });
+    }
+
+    @Override
+    public String toString() {
+        return this.id.toString();
     }
 }

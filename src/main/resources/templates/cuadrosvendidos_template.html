@@ -8,7 +8,7 @@
     <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
     <link href="css/bootstrap/business.css" rel="stylesheet">
     <link href="css/bootstrap/table.css" rel="stylesheet">
-    <title>Cuadros</title>
+    <title>Cuadros vendidos</title>
 </head>
 <body>
 
@@ -37,7 +37,7 @@
     <div class="container">
     <h1>Cuadros</h1>
 
-        <form action="/buscarcuadro" method="get">
+        <form action="/buscarcuadrovendido" method="get">
             <div class="input-group">
                 <div class="barra-busqueda">
                     <input type="text" name="busqueda" class="form-control"  placeholder="Buscar...">
@@ -46,9 +46,8 @@
                     <select name="criterio" class="custom-select">
                         <option value="titulo" selected="selected">Buscar por...</option>
                         <option value="titulo">Titulo</option>
-                        <option value="autor">Autor</option>
-                        <option value="descripcion">Descripcion</option>
-                        <option value="anyo">Año de finalizacion</option>
+                        <option value="comprador">Comprador</option>
+                        <option value="fecha">Fecha de compra</option>
                         <option value="precio">Precio</option>
                     </select>
                 </div>
@@ -61,15 +60,15 @@
                 <a href="nuevo_cuadro.html" class="btn btn-primary">Añadir cuadro</a>
                 <a href="nuevo_cuadro.html" class="btn btn-light">Ver solo cuadros vendidos</a>
             </div>
-            <form th:action="@{/mostrarcuadrosorden(lista = ${cuadros})}" method="post">
+            <form th:action="@{/mostrarcuadrosvendidosorden(lista = ${cuadros})}" method="post">
                 <div class="ordenar-por-group">
                     <div class="ordenar-por">
                         <select name="orden" class="custom-select">
                             <option value="" selected="selected">Ordenar por...</option>
                             <option value="tituloAsc" type="submit">Titulo (A-Z)</option>
                             <option value="tituloDesc">Titulo (Z-A)</option>
-                            <option value="anyoAsc">Año: Mas antiguos primero</option>
-                            <option value="anyoDesc">Año: Mas recientes primero</option>
+                            <option value="fechaAsc">Fecha de compra: Mas antiguos primero</option>
+                            <option value="fechaDesc">Fecha de compra: Mas recientes primero</option>
                             <option value="precioAsc">Precio: mas baratos primero</option>
                             <option value="precioDesc">Precio: mas caros primero</option>
                         </select>
@@ -88,10 +87,9 @@
                     <thead>
                     <tr class="table100-head">
                         <th class="column1">Titulo</th>
-                        <th class="column2">Autor</th>
-                        <th class="column3">Año de finalizacion</th>
+                        <th class="column2">Comprador</th>
+                        <th class="column3">Fecha de compra</th>
                         <th class="column4">Precio</th>
-                        <th class="column5">Vendido</th>
                         <th class="column6"></th>
                     </tr>
                     </thead>
@@ -104,22 +102,17 @@
                         </td>
                         <td class="column2">
                             <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
-                            <!--    <div th:text="${cuadro.getAutor()} ?: ${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.getAutor().getApellidos()}"></div>  -->
+                                <div th:text="${cuadro.getAnyoFinalizacion()}" ></div>
                             </a>
                         </td>
-                        <td class="column3">
+                        <td  class="column3">
                             <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
-                                <div th:text="${cuadro.getAnyoFinalizacion()}" ></div>
+                                <div th:text="${cuadro.anchura_formato()} + ' × ' + ${cuadro.altura_formato()}"></div>
                             </a>
                         </td>
                         <td  class="column4">
                             <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
                                 <div th:text="${cuadro.getPrecio()} + ' €'"></div>
-                            </a>
-                        </td>
-                        <td  class="column5">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
-                                <div th:text="${cuadro.vendido_texto()}"></div>
                             </a>
                         </td>
                         <td  class="column6">
