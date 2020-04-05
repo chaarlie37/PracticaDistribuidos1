@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import sd.practica1.model.Cliente;
 import sd.practica1.model.Cuadro;
 import sd.practica1.repositories.AutorRepository;
+import sd.practica1.repositories.ClienteRepository;
 import sd.practica1.repositories.CuadroRepository;
 
 
@@ -22,6 +23,8 @@ public class CuadrosController {
     private CuadroRepository cuadroRepository;
     @Autowired
     private AutorRepository autorRepository;
+    @Autowired
+    private ClienteRepository clienteRepository;
 
     @PostConstruct
     public void init(){
@@ -47,6 +50,7 @@ public class CuadrosController {
         Cuadro cuadro = cuadroRepository.findByTitulo(titulo);
         model.addAttribute("cuadro", cuadro);
         model.addAttribute("autores", autorRepository.findAll());
+        model.addAttribute("clientes", clienteRepository.findAll());
         return "modificarcuadroform";
     }
 

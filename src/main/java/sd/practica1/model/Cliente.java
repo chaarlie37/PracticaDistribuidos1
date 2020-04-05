@@ -1,9 +1,7 @@
 package sd.practica1.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -21,6 +19,8 @@ public class Cliente{
     private String direccion;
     private String email;
     private String telefono;
+    @OneToMany(mappedBy = "comprador")
+    private Collection<Cuadro> cuadros;
 
     public Cliente(){
 

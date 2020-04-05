@@ -104,7 +104,7 @@
                         </td>
                         <td class="column2">
                             <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
-                            <!--    <div th:text="${cuadro.getAutor()} ?: ${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.getAutor().getApellidos()}"></div>  -->
+                                <div th:unless="${cuadro.getAutor() == null}" th:text="${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.getAutor().getApellidos()}"></div>
                             </a>
                         </td>
                         <td class="column3">

@@ -114,6 +114,24 @@ public class Cuadro {
         this.autor = autor;
     }
 
+    public Cliente getComprador() {
+        return comprador;
+    }
+
+    public void setComprador(Cliente comprador) {
+        this.comprador = comprador;
+    }
+
+    public Date getFechaCompra() {
+        return fechaCompra;
+    }
+
+    public void setFechaCompra(Date fechaCompra) {
+        this.fechaCompra = fechaCompra;
+    }
+
+
+
     public String vendido_texto(){
         if(vendido)
             return "Si";
