@@ -1,9 +1,13 @@
 package sd.practica1.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -40,7 +44,6 @@ public class Cuadro {
         this.anchura=anchura;
         this.altura=altura;
         this.precio=precio;
-
     }
 
     public void setId(Integer id) {
@@ -130,6 +133,7 @@ public class Cuadro {
     public void setFechaCompra(Date fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
+
 
 
     public String vendido_texto(){
@@ -224,6 +228,17 @@ public class Cuadro {
                 return c1.getFechaCompra().compareTo(c2.getFechaCompra());
             }
         });
+    }
+
+    public void agregarFecha(String fecha){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date d = new java.util.Date();
+
+        try{
+            d = simpleDateFormat.parse(fecha);
+            this.fechaCompra = new Date(d.getTime());
+        }catch(ParseException e){}
+
     }
 
     @Override

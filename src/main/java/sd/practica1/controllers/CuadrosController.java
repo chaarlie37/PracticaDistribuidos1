@@ -91,12 +91,18 @@ public class CuadrosController {
 
 
     @RequestMapping("/modificarcuadro")
-    public String modificarCuadro(Integer id, Cuadro nuevo, String nifautor, Model model) {
+    public String modificarCuadro(Integer id, Cuadro nuevo, String nifautor, String nifcliente, String fecha, Model model) {
         Autor a = autorRepository.findByNIF(nifautor);
+        Cliente c = clienteRepository.findByNIF(nifcliente);
+        nuevo.setComprador(c);
         nuevo.setAutor(a);
+        System.out.println(fecha);
+        nuevo.agregarFecha(fecha);
+        c.agregarCuadro(nuevo);
         a.agregarCuadro(nuevo);
         cuadroRepository.save(nuevo);
         autorRepository.save(a);
+        clienteRepository.save(c);
         return "exito";
 
 

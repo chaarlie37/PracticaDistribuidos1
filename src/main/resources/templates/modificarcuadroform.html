@@ -35,7 +35,6 @@
 
 <div class="container">
     <h2 class="mt-3 header-formulario">Modificar cuadro</h2>
-</div>
     <form th:action="@{/modificarcuadro(id = ${cuadro.getId()})}" method="post">
         <div class="control-group form-group">
             <div class="controls">
@@ -46,7 +45,7 @@
         <div class="control-group form-group">
             <div class="controls">
                 <label>Autor</label>
-                <select name="nifautor">
+                <select name="nifautor" class="custom-select">
                     <option th:each="autor : ${autores}" th:value="${autor.getNIF()}" th:text="${autor.getNombre() + ' ' + autor.getApellidos()}" th:selected="${cuadro.getAutor()}"></option>
                 </select>
             </div>
@@ -60,43 +59,49 @@
         <div class="control-group form-group">
             <div class="controls">
                 <label>Descripción</label>
-                <input type="text" name="anyo" th:value="${cuadro.getAnyoFinalizacion()}" class="form-control">
-                <textarea name="descripcion" th:value="${cuadro.getDescripcion()}" cols="30" rows="10"></textarea>
+                <textarea name="descripcion" th:value="${cuadro.getDescripcion()}" cols="30" rows="5" class="form-control"></textarea>
             </div>
         </div>
         <div class="control-group form-group">
             <div class="controls">
-                <label>Precio</label>
+                <label>Precio (€)</label>
                 <input type="text" name="precio" th:value="${cuadro.getPrecio()}" class="form-control">
             </div>
         </div>
         <div class="control-group form-group">
             <div class="controls">
-                <label>Anchura</label>
+                <label>Anchura (cm)</label>
                 <input type="text" name="anchura" th:value="${cuadro.getAnchura()}" class="form-control">
             </div>
         </div>
         <div class="control-group form-group">
             <div class="controls">
-                <label>Altura</label>
+                <label>Altura (cm)</label>
                 <input type="text" name="altura" th:value="${cuadro.getAltura()}" class="form-control">
             </div>
         </div>
         <div class="control-group form-group">
             <div class="controls">
                 <label>Vendido</label>
-                <input type="checkbox" name="vendido" th:value="${cuadro.isVendido()}" class="form-control">
+                <div class="radio">
+                    <input type="radio" name="vendido" value="false" th:checked="not ${cuadro.isVendido()}"> No <br>
+                    <input type="radio" name="vendido" value="true" th:checked="${cuadro.isVendido()}"> Si <br>
+                </div>
+
             </div>
         </div>
-        <div th:if="${cuadro.isVendido()}">
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Comprador</label>
-                    <select name="nifcliente">
-                        <option th:value="${cuadro.getComprador()}" selected="selected"></option>
-                        <option th:each="cliente : ${clientes}" th:value="${cliente.getNIF()}" th:text="${cliente.getNombre() + ' ' + cliente.getApellidos()}"></option>
-                    </select>
-                </div>
+        <p>Los siguientes atributos solo seran validados si la opcion de vendido esta seleccionada en SI.</p>
+        <div class="control-group form-group">
+            <div class="controls">
+                <label>Comprador</label>
+                <select name="nifcliente" class="custom-select">
+                    <option th:text="${cuadro.getComprador()} ?: 'Selecciona...'"></option>
+                    <option th:each="cliente : ${clientes}"
+                            th:value="${cliente.getNIF()}"
+                            th:text="${cliente.getNombre() + ' ' + cliente.getApellidos()}"
+                            th:selected="${cuadro.getComprador() != null and cliente.getId().equals(cuadro.getComprador().getId())}">
+                    </option>
+                </select>
             </div>
         </div>
         <div class="control-group form-group">
@@ -105,10 +110,13 @@
                 <input type="date" name="fecha" th:value="${cuadro.getFechaCompra()}" class="form-control">
             </div>
         </div>
-
-
-    <input type="submit" value="Guardar">
+        <div class="guardar-cancelar">
+            <input type="submit" value=" Guardar " class="btn btn-primary">
+            <a href="/cuadros" class="btn btn-light">Cancelar</a>
+        </div>
     </form>
+</div>
+
 
 </body>
 </html>

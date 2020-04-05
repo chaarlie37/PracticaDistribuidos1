@@ -133,8 +133,7 @@ public class Cliente{
     }
 
 
-    @Override
-    public int hashCode() {
-        return 0;
+    public void agregarCuadro(Cuadro c){
+        this.cuadros.add(c);
     }
 }
