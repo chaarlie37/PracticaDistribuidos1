@@ -58,7 +58,7 @@
         <div class="encima-tabla">
             <div>
                 <a href="nuevo_cuadro.html" class="btn btn-primary">Añadir cuadro</a>
-                <a href="nuevo_cuadro.html" class="btn btn-light">Ver solo cuadros vendidos</a>
+                <a href="/cuadros" class="btn btn-light">Ver todos los cuadros</a>
             </div>
             <form th:action="@{/mostrarcuadrosvendidosorden(lista = ${cuadros})}" method="post">
                 <div class="ordenar-por-group">
@@ -102,12 +102,12 @@
                         </td>
                         <td class="column2">
                             <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
-                                <div th:text="${cuadro.getAnyoFinalizacion()}" ></div>
+                                <div th:text="${cuadro.getComprador()}" ></div>
                             </a>
                         </td>
                         <td  class="column3">
                             <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
-                                <div th:text="${cuadro.anchura_formato()} + ' × ' + ${cuadro.altura_formato()}"></div>
+                                <div th:text="${cuadro.getFechaCompra()}"></div>
                             </a>
                         </td>
                         <td  class="column4">

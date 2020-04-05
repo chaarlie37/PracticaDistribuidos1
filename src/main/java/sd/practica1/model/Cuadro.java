@@ -40,6 +40,7 @@ public class Cuadro {
         this.anchura=anchura;
         this.altura=altura;
         this.precio=precio;
+
     }
 
     public void setId(Integer id) {
@@ -131,7 +132,6 @@ public class Cuadro {
     }
 
 
-
     public String vendido_texto(){
         if(vendido)
             return "Si";
@@ -204,6 +204,24 @@ public class Cuadro {
             @Override
             public int compare(Cuadro c1, Cuadro c2) {
                 return c2.getPrecio() - c1.getPrecio();
+            }
+        });
+    }
+
+    public static void ordenarCuadrosFechaDesc(List<Cuadro> lista){
+        Collections.sort(lista, new Comparator<Cuadro>() {
+            @Override
+            public int compare(Cuadro c1, Cuadro c2) {
+                return c2.getFechaCompra().compareTo(c1.getFechaCompra());
+            }
+        });
+    }
+
+    public static void ordenarCuadrosFechaAsc(List<Cuadro> lista){
+        Collections.sort(lista, new Comparator<Cuadro>() {
+            @Override
+            public int compare(Cuadro c1, Cuadro c2) {
+                return c1.getFechaCompra().compareTo(c2.getFechaCompra());
             }
         });
     }

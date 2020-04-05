@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface ClienteRepository extends JpaRepository <Cliente, Integer> {
     Cliente findByNIF(String nif);
+    Cliente findByNombre(String nombre);
     List<Cliente> findByNombreContainsIgnoreCase(String nombre);
     List<Cliente> findByApellidosContainsIgnoreCase(String apellidos);
     List<Cliente> findByNIFContainsIgnoreCase(String nif);

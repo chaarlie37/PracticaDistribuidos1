@@ -14,6 +14,7 @@ import sd.practica1.repositories.CuadroRepository;
 
 
 import javax.annotation.PostConstruct;
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -43,6 +44,17 @@ public class CuadrosController {
     public String inicio(Model model){
         model.addAttribute("cuadros", cuadroRepository.findAll());
         return "cuadros_template";
+    }
+
+    @RequestMapping("/cuadrosvendidos")
+    public String inicioVendidos(Model model){
+        List<Cuadro> lista= cuadroRepository.findAll();
+        for (int i=0; i<lista.size(); i++){
+            if (lista.get(i).isVendido())
+                lista.remove(i);
+        }
+        model.addAttribute("cuadrosvendidos",lista );
+        return "cuadrosvendidos_template";
     }
 
     @RequestMapping("/modificarcuadroform")
@@ -169,6 +181,57 @@ public class CuadrosController {
 
         model.addAttribute("cuadros", lista);
         return "cuadros_template";
+    }
+    @RequestMapping("/mostrarcuadrosvendidosorden")
+    public String mostrarcuadrosvendidosorden(@RequestParam(value = "lista") List<Cuadro> lista, @RequestParam String orden, Model model){
+
+        switch (orden){
+            case "tituloAsc" : Cuadro.ordenarCuadrosTituloAsc(lista); break;
+            case "tituloDesc" : Cuadro.ordenarCuadrosTituloDesc(lista); break;
+            case "fechaAsc" : Cuadro.ordenarCuadrosFechaAsc(lista); break;
+            case "fechaDesc" : Cuadro.ordenarCuadrosFechaDesc(lista); break;
+            case "precioAsc" : Cuadro.ordenarCuadrosPrecioAsc(lista); break;
+            case "precioDesc" : Cuadro.ordenarCuadrosPrecioDesc(lista); break;
+
+        }
+
+        model.addAttribute("cuadros", lista);
+        return "cuadrosvendidos_template";
+    }
+
+    @RequestMapping("/buscarcuadrovendido")
+    public String buscarCuadroVendido(String busqueda, String criterio, Model model){
+        List<Cuadro> lista=null;
+
+
+        switch (criterio){
+            case "titulo":
+                lista= cuadroRepository.findByTituloContainsIgnoreCase(busqueda);
+                break;
+            case "comprador":
+                lista=cuadroRepository.findByComprador(clienteRepository.findByNombre(busqueda));
+                break;
+            case "fecha":
+                lista=cuadroRepository.findByFechaCompra(Date.valueOf(busqueda));
+                break;
+            case "precio":
+                lista=cuadroRepository.findByPrecio(Integer.parseInt(busqueda));
+                break;
+        }
+        if (lista.isEmpty()){
+            String men = "No se ha encontrado ningun cuadro con " + criterio + " " + "\"" + busqueda + "\"";
+            model.addAttribute("mensaje", men);
+            return "error_msg";
+        }
+        else if(busqueda.equals("")){
+            String mens = "No se ha insertado nada en la barra de busqueda.";
+            model.addAttribute("mensaje", mens);
+            return "error_msg";
+        }
+        else {
+            model.addAttribute("cuadros", lista);
+            return "cuadros_template";
+        }
     }
 
 }
