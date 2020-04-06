@@ -106,10 +106,11 @@
                                     <div th:text="${cliente.getNIF()}" ></div>
                                 </a>
                             </td>
-                            <td class="column6">
-
-                                <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" ><img src="../images/baseline_create_black_18dp.png" height="18" width="18"></a>
-                                <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" th:text="'Modificar'"></a>
+                            <td class="column4">
+                                <div class="boton-tabla">
+                                    <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" th:text="'Modificar'"></a>
+                                    <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" ><img src="../images/round_create_white_18dp.png" height="12" width="10"></a>
+                                </div>
                             </td>
                         </tr>
                         </tbody>

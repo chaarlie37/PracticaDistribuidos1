@@ -108,7 +108,10 @@
                             </a>
                         </td>
                         <td class="column4">
-                            <a th:href="@{/modificarautorform(nif = ${autor.getNIF()})}" th:text="Modificar"></a>
+                            <div class="boton-tabla">
+                                <a th:href="@{/modificarautorform(nif = ${autor.getNIF()})}" th:text="Modificar" ></a>
+                                <a th:href="@{/modificarautorform(nif = ${autor.getNIF()})}"><img src="../images/round_create_white_18dp.png" height="12" width="10" class="icono-modifica"></a>
+                            </div>
                         </td>
                     </tr>
                     </tbody>

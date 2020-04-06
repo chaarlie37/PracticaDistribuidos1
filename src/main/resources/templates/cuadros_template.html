@@ -123,7 +123,10 @@
                             </a>
                         </td>
                         <td  class="column6">
-                            <a th:href="@{/modificarcuadroform(titulo = ${cuadro.getTitulo()})}" th:text="Modificar"></a>
+                            <div class="boton-tabla">
+                                <a th:href="@{/modificarcuadroform(titulo = ${cuadro.getTitulo()})}" th:text="Modificar"></a>
+                                <a th:href="@{/modificarcuadroform(titulo = ${cuadro.getTitulo()})}"><img src=../images/round_create_white_18dp.png" height="12" width="10" class="icono-modifica"> </a>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
