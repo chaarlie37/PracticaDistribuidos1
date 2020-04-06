@@ -65,19 +65,19 @@
         <div class="control-group form-group">
             <div class="controls">
                 <label>Precio (€)</label>
-                <input type="text" name="precio" th:value="${cuadro.getPrecio()}" class="form-control">
+                <input type="text" name="precio" th:value="${cuadro.getPrecio()}" class="form-control" required>
             </div>
         </div>
         <div class="control-group form-group">
             <div class="controls">
                 <label>Anchura (cm)</label>
-                <input type="text" name="anchura" th:value="${cuadro.getAnchura()}" class="form-control">
+                <input type="text" name="anchura" th:value="${cuadro.getAnchura()}" class="form-control" required>
             </div>
         </div>
         <div class="control-group form-group">
             <div class="controls">
                 <label>Altura (cm)</label>
-                <input type="text" name="altura" th:value="${cuadro.getAltura()}" class="form-control">
+                <input type="text" name="altura" th:value="${cuadro.getAltura()}" class="form-control" required>
             </div>
         </div>
         <div class="control-group form-group">
