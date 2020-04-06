@@ -58,7 +58,7 @@
 
         <div class="encima-tabla">
             <div>
-                <a href="nuevo_cuadro.html" class="btn btn-primary">Añadir cuadro</a>
+                <a href="/nuevocuadro" class="btn btn-primary">Añadir cuadro</a>
                 <a href="/cuadrosvendidos" class="btn btn-light">Ver solo cuadros vendidos</a>
             </div>
             <form th:action="@{/mostrarcuadrosorden(lista = ${cuadros})}" method="post">
@@ -81,7 +81,7 @@
 
 
 
-    <div class="limiter">
+        <div class="limiter" th:unless="${cuadros.isEmpty()}">
         <div class="wrap-table100">
             <div class="table100">
                 <table>
@@ -131,6 +131,10 @@
             </div>
         </div>
     </div>
+        <div class="cuadro-error"  th:if="${cuadros.isEmpty()}">
+            <p class="texto-error">No hay cuadros registrados.</p>
+        </div>
     </div>
+
 </body>
 </html>

@@ -2,22 +2,102 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,900' rel='stylesheet' type='text/css'>
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-grid.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
+    <link href="css/bootstrap/business.css" rel="stylesheet">
+    <link href="css/bootstrap/table.css" rel="stylesheet">
     <title>Cuadro</title>
 </head>
 <body>
-    <p th:text="'Título:' + ${cuadro.getTitulo()}"></p>
-    <!-- TODO: PONER LINK PARA MOSTRAR EL AUTOR -->
-    <p th:text="'Autor:' + ${cuadro.getAutor().getNombre()}"></p>
-    <p th:text="'Año:' + ${cuadro.getAnyoFinalizacion()}"></p>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Inicio</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/clientes">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cuadros">Cuadros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/autores">Autores</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="titulo-cabecera">
+        <h1 class="mt-3 mt-4">
+            Cuadro <br>
+            <small th:if="${cuadro.getAutor() != null}" th:text="${cuadro.getTitulo().toUpperCase()} + ' ' + ${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.getAutor().getApellidos()}"></small>
+        </h1>
+        <div class="boton-volver">
+            <div class="btn btn-secondary">
+                <a href="/cuadros"><img src="../images/round_arrow_back_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
+                <a href="/cuadros" th:text="'Volver'" class="texto-boton"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="zona-mostrar">
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Titulo</p>
+            <p th:text="${cuadro.getTitulo()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Autor</p>
+               <a th:if="${cuadro.getAutor() != null}" th:href="@{/mostrarautor(nif=${cuadro.getAutor().getNIF()})}" th:text="${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.autor.getApellidos()}" class="atributo"></a>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Año de finalizacion</p>
+            <p th:text="${cuadro.getAnyoFinalizacion()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Anchura</p>
+            <p th:text="${cuadro.getAnchura()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Altura</p>
+            <p th:text="${cuadro.getAltura()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Precio</p>
+            <p th:text="'Precio:' + ${cuadro.getPrecio()} + ' €'" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Vendido</p>
+            <p th:text="${cuadro.vendido_texto()}" class="atributo"></p>
+        </div>
+
+        <div class="atributo-mostrar" th:if="${cuadro.isVendido()}">
+            <p class="nombre-atributo">Comprador</p>
+            <a th:href="@{/mostrarcliente (nif = cuadro.getComprador().getNIF())}" th:text="'Vendido:' + ${cuadro.getComprador().getNombre() + ' ' + cuadro.getComprador().getApellidos()}"></a>
+        </div>
+        <div class="atributo-mostrar" th:if="${cuadro.isVendido()}">
+            <p class="nombre-atributo">Fecha de venta</p>
+            <p th:text="${cuadro.fechaFormateada()}" class="atributo"></p>
+        </div>
+
+        <div class="boton-modificar-mostrar">
+            <div class="btn btn-primary">
+                <a th:href="@{/modificarcuadroform(titulo = ${cuadro.getTitulo()})}" ><img src="../images/round_create_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
+                <a th:href="@{/modificarcuadroform(titulo = ${cuadro.getTitulo()})}" th:text="'Modificar'" class="texto-boton"></a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
     <p th:text="'Descripción:' + ${cuadro.getDescripcion()}"></p>
-    <p th:text="'Precio:' + ${cuadro.getPrecio()}"></p>
-    <p th:text="'Anchura:' + ${cuadro.getAnchura()}"></p>
-    <p th:text="'Altura:' + ${cuadro.getAltura()}"></p>
-    <p th:text="'Vendido:' + ${cuadro.isVendido()}"></p>
-    <p th:text="${cuadro.getComprador() != null} ? 'Comprador: ' + ${cuadro.getComprador().getNombre()}"></p>
-    <p th:text="${cuadro.getFechaCompra() != null}  ? 'Fecha de compra:' + ${cuadro.getFechaCompra().toString()}"></p>
 
 </body>
 </html>

@@ -35,7 +35,7 @@
 </nav>
 
     <div class="container">
-    <h1>Cuadros</h1>
+    <h1>Cuadros vendidos</h1>
 
         <form action="/buscarcuadrovendido" method="get">
             <div class="input-group">
@@ -80,7 +80,7 @@
 
 
 
-    <div class="limiter">
+        <div class="limiter" th:unless="${cuadros.isEmpty()}">
         <div class="wrap-table100">
             <div class="table100">
                 <table>
@@ -102,7 +102,7 @@
                         </td>
                         <td class="column2">
                             <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
-                                <div th:text="${cuadro.getComprador()}" ></div>
+                                <div th:text="${cuadro.getComprador().getNombre() + ' ' + cuadro.getComprador().getApellidos()}" ></div>
                             </a>
                         </td>
                         <td  class="column3">
@@ -124,6 +124,12 @@
             </div>
         </div>
     </div>
+        <div class="cuadro-error"  th:if="${cuadros.isEmpty()}">
+            <div class="texto-error">No hay cuadros vendidos registrados.</div>
+        </div>
     </div>
+
+
+
 </body>
 </html>

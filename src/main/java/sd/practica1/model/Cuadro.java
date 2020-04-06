@@ -233,12 +233,17 @@ public class Cuadro {
     public void agregarFecha(String fecha){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date d = new java.util.Date();
-
         try{
             d = simpleDateFormat.parse(fecha);
             this.fechaCompra = new Date(d.getTime());
         }catch(ParseException e){}
 
+    }
+
+    public String fechaFormateada(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        simpleDateFormat.format(fechaCompra);
+        return fechaCompra.toString();
     }
 
     @Override

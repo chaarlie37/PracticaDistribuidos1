@@ -132,7 +132,9 @@
             </div>
         </div>
     </div>
-    <p th:text="${autor.getCuadros().isEmpty()} ? 'Este autor no tiene cuadros.'"></p>
+    <div class="cuadro-error"  th:if="${autor.getCuadros().isEmpty()}">
+        <div class="texto-error">Este autor no tiene cuadros.</div>
+    </div>
 
 </div>
 

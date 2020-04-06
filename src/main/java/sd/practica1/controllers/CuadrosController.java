@@ -48,12 +48,7 @@ public class CuadrosController {
 
     @RequestMapping("/cuadrosvendidos")
     public String inicioVendidos(Model model){
-        List<Cuadro> lista= cuadroRepository.findAll();
-        for (int i=0; i<lista.size(); i++){
-            if (lista.get(i).isVendido())
-                lista.remove(i);
-        }
-        model.addAttribute("cuadrosvendidos",lista );
+        model.addAttribute("cuadros", cuadroRepository.findByVendido(true));
         return "cuadrosvendidos_template";
     }
 
@@ -79,6 +74,7 @@ public class CuadrosController {
     @RequestMapping("/nuevocuadro")
     public String nuevoCuadro(Model model){
         model.addAttribute("autores", autorRepository.findAll());
+        model.addAttribute("clientes", clienteRepository.findAll());
         return "nuevo_cuadro";
     }
 
