@@ -86,6 +86,10 @@
             <p class="nombre-atributo">Fecha de venta</p>
             <p th:text="${cuadro.fechaFormateada()}" class="atributo"></p>
         </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Descripcion</p>
+            <p th:text="${cuadro.getDescripcion()}" class="atributo"></p>
+        </div>
 
         <div class="boton-modificar-mostrar">
             <div class="btn btn-primary">
@@ -97,7 +101,6 @@
     </div>
 
 </div>
-    <p th:text="'Descripción:' + ${cuadro.getDescripcion()}"></p>
 
 </body>
 </html>
