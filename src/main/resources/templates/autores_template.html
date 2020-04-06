@@ -93,17 +93,17 @@
                     <tbody>
                     <tr th:each="autor : ${autores}">
                         <td  class="column1">
-                            <a th:href="@{/mostrarautor(nif = ${autor.getNIF()})}">
+                            <a th:href="@{/mostrarautor(id = ${autor.getId()})}">
                                 <div th:text="${autor.getNIF()}"></div>
                             </a>
                         </td>
                         <td  class="column2">
-                            <a th:href="@{/mostrarautor(nif = ${autor.getNIF()})}">
+                            <a th:href="@{/mostrarautor(id = ${autor.getId()})}">
                                 <div th:text="${autor.getNombre()}"></div>
                             </a>
                         </td>
                         <td class="column3">
-                            <a th:href="@{/mostrarautor(nif = ${autor.getNIF()})}">
+                            <a th:href="@{/mostrarautor(id = ${autor.getId()})}">
                                 <div th:text="${autor.getApellidos()}" ></div>
                             </a>
                         </td>

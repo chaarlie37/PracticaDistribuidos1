@@ -56,13 +56,6 @@ public class AutoresController {
         }
     }
 
-    @RequestMapping("/modificarautorform")
-    public String modificarAutorForm(@RequestParam String nif, Model model){
-        Autor autor = autorRepository.findByNIF(nif);
-        model.addAttribute("autor", autor);
-        return "modificarautorform";
-    }
-
     @RequestMapping("/modificarautor")
     public String modificarAutor(@RequestParam Integer id,Autor nuevo, Model model){
         nuevo.setId(id);
@@ -70,9 +63,18 @@ public class AutoresController {
         return "exito";
     }
 
+    @RequestMapping("/modificarautorform")
+    public String modificarAutorForm(@RequestParam Integer id, Model model){
+        Autor autor = autorRepository.getOne(id);
+        model.addAttribute("autor", autor);
+        return "modificarautorform";
+    }
+
+
+
     @RequestMapping("/mostrarautor")
-    public String mostrarAutor(@RequestParam String nif, Model model){
-        Autor autor = autorRepository.findByNIF(nif);
+    public String mostrarAutor(@RequestParam Integer id, Model model){
+        Autor autor = autorRepository.getOne(id);
         model.addAttribute("autor", autor);
         return "mostrarautor";
     }

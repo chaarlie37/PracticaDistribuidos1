@@ -92,17 +92,17 @@
                         <tbody>
                         <tr th:each="cliente : ${clientes}">
                             <td class="column1">
-                                <a th:href="@{/mostrarcliente(nif = ${cliente.getNIF()})}">
+                                <a th:href="@{/mostrarcliente(id = ${cliente.getId()})}">
                                     <div th:text="${cliente.getNombre()}" ></div>
                                 </a>
                             </td>
                             <td  class="column2">
-                                <a th:href="@{/mostrarcliente(nif = ${cliente.getNIF()})}">
+                                <a th:href="@{/mostrarcliente(id = ${cliente.getId()})}">
                                     <div th:text="${cliente.getApellidos()}"></div>
                                 </a>
                             </td>
                             <td class="column3">
-                                <a th:href="@{/mostrarcliente(nif = ${cliente.getNIF()})}">
+                                <a th:href="@{/mostrarcliente(id = ${cliente.getId()})}">
                                     <div th:text="${cliente.getNIF()}" ></div>
                                 </a>
                             </td>

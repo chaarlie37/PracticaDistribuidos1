@@ -102,20 +102,36 @@
     color: #495057;
 }
 
-.cuadro-error{
+.cuadro-advertencia{
     background-color: #ffe06e;
     border-style: none;
     border-radius: 10px;
     height: fit-content;
     width: fit-content;
     padding: 1rem 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     margin-bottom: 2rem;
+}
+
+.texto-advertencia{
+    font-weight: 500;
+    color: #79631fc7;
+}
+
+.cuadro-error{
+    background-color: #ff747c;
+    border-style: none;
+    border-radius: 10px;
+    height: fit-content;
+    width: fit-content;
+    padding: 1rem 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .texto-error{
     font-weight: 500;
-    color: #79631fc7;
+    color: rgba(115, 26, 31, 0.78);
 }
 
 .boton-tabla{

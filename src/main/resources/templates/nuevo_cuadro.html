@@ -46,7 +46,7 @@
             <div class="controls">
                 <label>Autor</label>
                 <select name="nifautor" class="custom-select">
-                    <option value="Selecciona..." selected="selected"></option>
+                    <option value=" " selected="selected">Selecciona...</option>
                     <option th:each="autor : ${autores}" th:value="${autor.getNIF()}" th:text="${autor.getNombre() + ' ' + autor.getApellidos()}"></option>
                 </select>
             </div>
@@ -96,7 +96,7 @@
             <div class="controls">
                 <label>Comprador</label>
                 <select name="nifcliente" class="custom-select">
-                    <option value="Selecciona..."></option>
+                    <option value=" " selected>Selecciona...</option>
                     <option th:each="cliente : ${clientes}"
                             th:value="${cliente.getNIF()}"
                             th:text="${cliente.getNombre() + ' ' + cliente.getApellidos()}">

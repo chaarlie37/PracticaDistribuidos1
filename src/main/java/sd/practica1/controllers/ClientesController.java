@@ -53,15 +53,15 @@ public class ClientesController {
     }
 
     @RequestMapping("/mostrarcliente")
-    public String mostrarCliente(@RequestParam String nif, Model model){
-        Cliente cliente = clienteRepository.findByNIF(nif);
+    public String mostrarCliente(@RequestParam Integer id, Model model){
+        Cliente cliente = clienteRepository.getOne(id);
         model.addAttribute("cliente", cliente);
         return "mostrar_cliente";
     }
 
     @RequestMapping("/modificarclienteform")
-    public String modificarClienteForm(@RequestParam String nif, Model model){
-        Cliente cliente = clienteRepository.findByNIF(nif);
+    public String modificarClienteForm(@RequestParam Integer id, Model model){
+        Cliente cliente = clienteRepository.getOne(id);
         model.addAttribute("cliente", cliente);
         return "modificarclienteform";
     }

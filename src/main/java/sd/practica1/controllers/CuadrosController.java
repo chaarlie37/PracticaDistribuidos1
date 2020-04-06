@@ -53,8 +53,8 @@ public class CuadrosController {
     }
 
     @RequestMapping("/modificarcuadroform")
-    public String modificarCuadroForm(@RequestParam String titulo, Model model){
-        Cuadro cuadro = cuadroRepository.findByTitulo(titulo);
+    public String modificarCuadroForm(@RequestParam Integer id, Model model){
+        Cuadro cuadro = cuadroRepository.getOne(id);
         model.addAttribute("cuadro", cuadro);
         model.addAttribute("autores", autorRepository.findAll());
         model.addAttribute("clientes", clienteRepository.findAll());
@@ -62,13 +62,14 @@ public class CuadrosController {
     }
 
     @RequestMapping("/guardarcuadro")
-    public String guardarCuadro(Cuadro cuadro, String nombreautor, Model model){
-        Autor a = autorRepository.findByNIF(nombreautor);
-        cuadro.setAutor(a);
-        a.agregarCuadro(cuadro);
-        cuadroRepository.save(cuadro);
-        autorRepository.save(a);
-        return "exito";
+    public String guardarCuadro(Cuadro nuevo, String nifautor, String nifcliente, String fecha, Model model) {
+        return construirCuadro(nuevo, nifautor, nifcliente, fecha, model);
+    }
+
+    @RequestMapping("/modificarcuadro")
+    public String modificarCuadro(Integer id, Cuadro nuevo, String nifautor, String nifcliente, String fecha, Model model) {
+        nuevo.setId(id);
+        return construirCuadro(nuevo, nifautor, nifcliente, fecha, model);
     }
 
     @RequestMapping("/nuevocuadro")
@@ -79,57 +80,15 @@ public class CuadrosController {
     }
 
     @RequestMapping("/mostrarcuadro")
-    public String mostrarCuadro(@RequestParam String titulo, Model model){
-        Cuadro cuadro = cuadroRepository.findByTitulo(titulo);
+    public String mostrarCuadro(@RequestParam Integer id, Model model){
+        Cuadro cuadro = cuadroRepository.getOne(id);
         model.addAttribute("cuadro", cuadro);
         return "mostrarcuadro";
     }
 
-
-    @RequestMapping("/modificarcuadro")
-    public String modificarCuadro(Integer id, Cuadro nuevo, String nifautor, String nifcliente, String fecha, Model model) {
-        Autor a = autorRepository.findByNIF(nifautor);
-        Cliente c = clienteRepository.findByNIF(nifcliente);
-        nuevo.setComprador(c);
-        nuevo.setAutor(a);
-        System.out.println(fecha);
-        nuevo.agregarFecha(fecha);
-        c.agregarCuadro(nuevo);
-        a.agregarCuadro(nuevo);
-        cuadroRepository.save(nuevo);
-        autorRepository.save(a);
-        clienteRepository.save(c);
-        return "exito";
-
-
-    }
-        /*
-    public String guardarCuadro(Cuadro cuadro, Model model){
-        if(cuadroRepository.findByTitulo(cuadro.getTitulo()) == null) {
-            cuadroRepository.save(cuadro);
-            return "exito";
-        }
-        else{
-            String mensaje = "Error. El cuadro con titulo " + cuadro.getTitulo() + "ya existe. ";
-            model.addAttribute("mensaje" , mensaje);
-            return "error_msg";
-        }
-    }
-
-    @RequestMapping("/modificarcuadro")
-    public String modificarCuadro(@RequestParam Integer id, Cuadro nuevo, Model model){
-        nuevo.setId(id);
-        cuadroRepository.save(nuevo);
-        return "exito";
-    }
-
-
-*/
-
     @RequestMapping("/buscarcuadro")
     public String buscarCuadro(String busqueda, String criterio, Model model){
         List<Cuadro> lista=null;
-
 
         switch (criterio){
             case "titulo":
@@ -167,7 +126,6 @@ public class CuadrosController {
         }
     }
 
-
     @RequestMapping("/mostrarcuadrosorden")
     public String mostrarclientesorden(@RequestParam(value = "lista") List<Cuadro> lista, @RequestParam String orden, Model model){
 
@@ -184,6 +142,7 @@ public class CuadrosController {
         model.addAttribute("cuadros", lista);
         return "cuadros_template";
     }
+
     @RequestMapping("/mostrarcuadrosvendidosorden")
     public String mostrarcuadrosvendidosorden(@RequestParam(value = "lista") List<Cuadro> lista, @RequestParam String orden, Model model){
 
@@ -234,6 +193,43 @@ public class CuadrosController {
             model.addAttribute("cuadros", lista);
             return "cuadros_template";
         }
+    }
+
+    public String construirCuadro(Cuadro nuevo, String nifautor, String nifcliente, String fecha, Model model) {
+        if(nuevo.isVendido()){
+            if(nifcliente.isBlank()){
+                model.addAttribute("mensaje", "No se ha seleccionado ningun comprador.");
+                return "error_msg";
+            }
+            if(fecha.isBlank()){
+                model.addAttribute("mensaje", "No se ha seleccionado ninguna fecha valida.");
+                return "error_msg";
+            }
+        }
+        System.out.println("nif " + nifautor);
+        if(nifautor.isBlank()){
+            model.addAttribute("mensaje", "No se ha seleccionado ningun autor.");
+            return "error_msg";
+        }
+        if(nuevo.getDescripcion().length() > 255){
+            model.addAttribute("mensaje", "La descripcion no puede superar los 255 caracteres.");
+            return "error_msg";
+        }
+        Autor a = autorRepository.findByNIF(nifautor);
+        nuevo.setAutor(a);
+        Cliente c = new Cliente();
+        if(nuevo.isVendido()){
+            c = clienteRepository.findByNIF(nifcliente);
+            nuevo.setComprador(c);
+            nuevo.agregarFecha(fecha);
+            c.agregarCuadro(nuevo);
+        }
+        a.agregarCuadro(nuevo);
+        cuadroRepository.save(nuevo);
+        autorRepository.save(a);
+        if(nuevo.isVendido())
+            clienteRepository.save(c);
+        return "exito";
     }
 
 }

@@ -35,7 +35,7 @@
 </nav>
 
     <div class="container">
-    <h1>Cuadros</h1>
+    <h1 class="mt-4">Cuadros</h1>
 
         <form action="/buscarcuadro" method="get">
             <div class="input-group">
@@ -98,27 +98,27 @@
                     <tbody>
                     <tr th:each="cuadro : ${cuadros}">
                         <td class="column1">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
                                 <div th:text="${cuadro.getTitulo()}" ></div>
                             </a>
                         </td>
                         <td class="column2">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
                                 <div th:unless="${cuadro.getAutor() == null}" th:text="${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.getAutor().getApellidos()}"></div>
                             </a>
                         </td>
                         <td class="column3">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
                                 <div th:text="${cuadro.getAnyoFinalizacion()}" ></div>
                             </a>
                         </td>
                         <td  class="column4">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
                                 <div th:text="${cuadro.getPrecio()} + ' €'"></div>
                             </a>
                         </td>
                         <td  class="column5">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
                                 <div th:text="${cuadro.vendido_texto()}"></div>
                             </a>
                         </td>
@@ -134,8 +134,8 @@
             </div>
         </div>
     </div>
-        <div class="cuadro-error"  th:if="${cuadros.isEmpty()}">
-            <p class="texto-error">No hay cuadros registrados.</p>
+        <div class="cuadro-advertencia" th:if="${cuadros.isEmpty()}">
+            <p class="texto-advertencia">No hay cuadros registrados.</p>
         </div>
     </div>
 

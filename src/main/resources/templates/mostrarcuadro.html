@@ -55,11 +55,15 @@
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Autor</p>
-               <a th:if="${cuadro.getAutor() != null}" th:href="@{/mostrarautor(nif=${cuadro.getAutor().getNIF()})}" th:text="${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.autor.getApellidos()}" class="atributo"></a>
+               <a th:if="${cuadro.getAutor() != null}" th:href="@{/mostrarautor(nif=${cuadro.getAutor().getNIF()})}" th:text="${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.autor.getApellidos()}" class="atributo"></a><br>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Año de finalizacion</p>
             <p th:text="${cuadro.getAnyoFinalizacion()}" class="atributo"></p>
+        </div>
+        <div class="atributo-mostrar">
+            <p class="nombre-atributo">Descripcion</p>
+            <p th:text="${cuadro.getDescripcion()}" class="atributo"></p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Anchura</p>
@@ -86,15 +90,12 @@
             <p class="nombre-atributo">Fecha de venta</p>
             <p th:text="${cuadro.fechaFormateada()}" class="atributo"></p>
         </div>
-        <div class="atributo-mostrar">
-            <p class="nombre-atributo">Descripcion</p>
-            <p th:text="${cuadro.getDescripcion()}" class="atributo"></p>
-        </div>
+
 
         <div class="boton-modificar-mostrar">
             <div class="btn btn-primary">
-                <a th:href="@{/modificarcuadroform(titulo = ${cuadro.getTitulo()})}" ><img src="../images/round_create_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
-                <a th:href="@{/modificarcuadroform(titulo = ${cuadro.getTitulo()})}" th:text="'Modificar'" class="texto-boton"></a>
+                <a th:href="@{/modificarcuadroform(id = ${cuadro.getId()})}" ><img src="../images/round_create_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
+                <a th:href="@{/modificarcuadroform(id = ${cuadro.getId()})}" th:text="'Modificar'" class="texto-boton"></a>
             </div>
         </div>
 
