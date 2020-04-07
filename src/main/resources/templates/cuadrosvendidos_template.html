@@ -8,6 +8,7 @@
     <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
     <link href="css/bootstrap/business.css" rel="stylesheet">
     <link href="css/bootstrap/table.css" rel="stylesheet">
+    <link href="css/material-icons.css" rel="stylesheet">
     <title>Cuadros vendidos</title>
 </head>
 <body>
@@ -35,7 +36,7 @@
 </nav>
 
     <div class="container">
-    <h1>Cuadros vendidos</h1>
+        <h1 class="mt-4">Cuadros vendidos</h1>
 
         <form action="/buscarcuadrovendido" method="get">
             <div class="input-group">
@@ -96,27 +97,31 @@
                     <tbody>
                     <tr th:each="cuadro : ${cuadros}">
                         <td class="column1">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getId()})}" title="Ver detalles">
                                 <div th:text="${cuadro.getTitulo()}" ></div>
                             </a>
                         </td>
                         <td class="column2">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getId()})}" title="Ver detalles">
                                 <div th:text="${cuadro.getComprador().getNombre() + ' ' + cuadro.getComprador().getApellidos()}" ></div>
                             </a>
                         </td>
                         <td  class="column3">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getId()})}" title="Ver detalles">
                                 <div th:text="${cuadro.getFechaCompra()}"></div>
                             </a>
                         </td>
                         <td  class="column4">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getId()})}" title="Ver detalles">
                                 <div th:text="${cuadro.getPrecio()} + ' €'"></div>
                             </a>
                         </td>
                         <td  class="column6">
-                            <a th:href="@{/modificarcuadroform(titulo = ${cuadro.getTitulo()})}" th:text="Modificar"></a>
+                            <a th:href="@{/modificarcuadroform(id = ${cuadro.getId()})}" class="btn boton-tabla" title="Modificar">
+                                <div class="texto-boton-tabla">
+                                    <span class="icono-modificar-tabla material-icons">create</span>
+                                </div>
+                            </a>
                         </td>
                     </tr>
                     </tbody>
@@ -125,7 +130,10 @@
         </div>
     </div>
         <div class="cuadro-advertencia" th:if="${cuadros.isEmpty()}">
-            <div class="texto-advertencia">No hay cuadros vendidos registrados.</div>
+            <div class="texto-advertencia">
+                <span class="material-icons">warning</span>
+                No hay cuadros vendidos registrados.
+            </div>
         </div>
     </div>
 

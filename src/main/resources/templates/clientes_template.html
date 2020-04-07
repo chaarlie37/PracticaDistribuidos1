@@ -8,6 +8,7 @@
     <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
     <link href="css/bootstrap/business.css" rel="stylesheet">
     <link href="css/bootstrap/table.css" rel="stylesheet">
+    <link href="css/material-icons.css" rel="stylesheet">
     <title>Clientes</title>
 </head>
 <body>
@@ -55,12 +56,18 @@
                     <option value="telefono">Telefono</option>
                 </select>
             </div>
-            <input type="submit" value=" Buscar " class="btn btn-primary">
+            <button type="submit" class="btn btn-primary">
+                <span class="material-icons">search</span>
+                Buscar
+            </button>
         </div>
     </form>
 
     <div class="encima-tabla">
-        <a href="nuevo_cliente.html" class="btn btn-primary">Añadir cliente</a>
+        <a href="/nuevo_cliente.html" class="btn btn-primary">
+            <span class="material-icons">add_circle_outline</span>
+            Añadir cliente
+        </a>
         <form th:action="@{/mostrarclientesorden(lista = ${clientes})}" method="post">
             <div class="ordenar-por-group">
                 <div class="ordenar-por">
@@ -72,7 +79,10 @@
                         <option value="apellidosDesc">Apellidos (Z-A)</option>
                     </select>
                 </div>
-                <input type="submit" value="Ordenar" class="btn btn-secondary">
+                <button type="submit" class="btn btn-secondary">
+                    <span class="material-icons">swap_vert</span>
+                    Ordenar
+                </button>
             </div>
         </form>
     </div>
@@ -92,25 +102,27 @@
                         <tbody>
                         <tr th:each="cliente : ${clientes}">
                             <td class="column1">
-                                <a th:href="@{/mostrarcliente(id = ${cliente.getId()})}">
+                                <a th:href="@{/mostrarcliente(id = ${cliente.getId()})}" title="Ver detalles">
                                     <div th:text="${cliente.getNombre()}" ></div>
                                 </a>
                             </td>
                             <td  class="column2">
-                                <a th:href="@{/mostrarcliente(id = ${cliente.getId()})}">
-                                    <div th:text="${cliente.getApellidos()}"></div>
+                                <a th:href="@{/mostrarcliente(id = ${cliente.getId()})}" title="Ver detalles">
+                                    <div th:text="${cliente.getApellidos()}" th:unless="${cliente.getApellidos().isBlank()}"></div>
+                                    <div th:if="${cliente.getApellidos().isBlank()}">-</div>
                                 </a>
                             </td>
                             <td class="column3">
-                                <a th:href="@{/mostrarcliente(id = ${cliente.getId()})}">
+                                <a th:href="@{/mostrarcliente(id = ${cliente.getId()})}" title="Ver detalles">
                                     <div th:text="${cliente.getNIF()}" ></div>
                                 </a>
                             </td>
-                            <td class="column4">
-                                <div class="boton-tabla">
-                                    <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" th:text="'Modificar'"></a>
-                                    <a th:href="@{/modificarclienteform(nif = ${cliente.getNIF()})}" ><img src="../images/round_create_white_18dp.png" height="12" width="10"></a>
-                                </div>
+                            <td class="column6">
+                                    <a th:href="@{/modificarclienteform(id = ${cliente.getId()})}" class="btn boton-tabla" title="Modificar">
+                                        <div class="texto-boton-tabla">
+                                            <span class="icono-modificar-tabla material-icons">create</span>
+                                        </div>
+                                    </a>
                             </td>
                         </tr>
                         </tbody>

@@ -8,6 +8,7 @@
     <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
     <link href="css/bootstrap/business.css" rel="stylesheet">
     <link href="css/bootstrap/table.css" rel="stylesheet">
+    <link href="css/material-icons.css" rel="stylesheet">
     <title>Cuadro</title>
 </head>
 <body>
@@ -38,13 +39,15 @@
     <div class="titulo-cabecera">
         <h1 class="mt-3 mt-4">
             Cuadro <br>
-            <small th:if="${cuadro.getAutor() != null}" th:text="${cuadro.getTitulo().toUpperCase()} + ' ' + ${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.getAutor().getApellidos()}"></small>
+            <small th:if="${cuadro.getAutor() != null}" th:text="${cuadro.getTitulo().toUpperCase()}"></small>
         </h1>
         <div class="boton-volver">
-            <div class="btn btn-secondary">
-                <a href="/cuadros"><img src="../images/round_arrow_back_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
-                <a href="/cuadros" th:text="'Volver'" class="texto-boton"></a>
-            </div>
+            <a href="/cuadros" class="texto-boton">
+                <div class="btn btn-secondary">
+                    <span class="material-icons">arrow_back</span>
+                    Volver
+                </div>
+            </a>
         </div>
     </div>
 
@@ -55,7 +58,7 @@
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Autor</p>
-               <a th:if="${cuadro.getAutor() != null}" th:href="@{/mostrarautor(nif=${cuadro.getAutor().getNIF()})}" th:text="${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.autor.getApellidos()}" class="atributo"></a><br>
+               <a th:if="${cuadro.getAutor() != null}" th:href="@{/mostrarautor(nif=${cuadro.getAutor().getNIF()})}" th:text="${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.autor.getApellidos()}" class="atributo"></a><br><br>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Año de finalizacion</p>
@@ -95,10 +98,12 @@
 
 
         <div class="boton-modificar-mostrar">
-            <div class="btn btn-primary">
-                <a th:href="@{/modificarcuadroform(id = ${cuadro.getId()})}" ><img src="../images/round_create_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
-                <a th:href="@{/modificarcuadroform(id = ${cuadro.getId()})}" th:text="'Modificar'" class="texto-boton"></a>
-            </div>
+            <a th:href="@{/modificarcuadroform(id = ${cuadro.getId()})}" class="texto-boton">
+                <div class="btn btn-primary">
+                    <span class="icono-modificar material-icons">create</span>
+                    Modificar
+                </div>
+            </a>
         </div>
 
     </div>

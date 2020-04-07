@@ -91,6 +91,14 @@ public class Cliente{
         this.telefono = telefono;
     }
 
+    public Collection<Cuadro> getCuadros() {
+        return cuadros;
+    }
+
+    public void setCuadros(Collection<Cuadro> cuadros) {
+        this.cuadros = cuadros;
+    }
+
     public static void ordenarClientesNombreAsc(List<Cliente> lista){
         Collections.sort(lista, new Comparator<Cliente>() {
             @Override

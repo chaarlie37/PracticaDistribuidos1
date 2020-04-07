@@ -7,6 +7,7 @@
     <link href="css/bootstrap/bootstrap-grid.css" rel="stylesheet">
     <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
     <link href="css/bootstrap/business.css" rel="stylesheet">
+    <link href="css/material-icons.css" rel="stylesheet">
     <title>Modificar autor</title>
 </head>
 <body>
@@ -35,7 +36,8 @@
 
 <div class="container">
     <h2 class="mt-3 header-formulario">Modificar autor</h2>
-    <form th:action="@{/modificarautor(id = ${autor.getId()})}" method="post">
+    <div class="container-formularios">
+        <form th:action="@{/modificarautor(id = ${autor.getId()})}" method="post">
         <div class="control-group form-group">
             <div class="controls">
                 <label>Nombre</label>
@@ -57,7 +59,7 @@
         <div class="control-group form-group">
             <div class="controls">
                 <label>Año de nacimiento</label>
-                <input type="number" name="anyoNacimiento" class="form-control" th:value="${autor.getAnyoNacimiento()}" required>
+                <input type="text" name="anyo" class="form-control" th:value="${autor.getAnyoNacimiento()}">
             </div>
         </div>
         <div class="control-group form-group">
@@ -84,11 +86,15 @@
                 <input type="text" name="tlf" class="form-control" th:value="${autor.getTlf()}">
             </div>
         </div>
-        <div class="guardar-cancelar">
-            <input type="submit" value=" Guardar " class="btn btn-primary">
-            <a href="/autores" class="btn btn-light">Cancelar</a>
-        </div>
+            <div class="guardar-cancelar">
+                <button type="submit" class="btn btn-primary">
+                    <span class="material-icons">done</span>
+                    Guardar
+                </button>
+                <a href="/autores" class="btn btn-light">Cancelar</a>
+            </div>
     </form>
+    </div>
 </div>
 
 

@@ -62,14 +62,14 @@ public class CuadrosController {
     }
 
     @RequestMapping("/guardarcuadro")
-    public String guardarCuadro(Cuadro nuevo, String nifautor, String nifcliente, String fecha, Model model) {
-        return construirCuadro(nuevo, nifautor, nifcliente, fecha, model);
+    public String guardarCuadro(Cuadro nuevo, String anyo, String nifautor, String nifcliente, String fecha, Model model) {
+        return construirCuadro(nuevo, anyo, nifautor, nifcliente, fecha, model);
     }
 
     @RequestMapping("/modificarcuadro")
-    public String modificarCuadro(Integer id, Cuadro nuevo, String nifautor, String nifcliente, String fecha, Model model) {
+    public String modificarCuadro(Integer id, Cuadro nuevo, String anyo, String nifautor, String nifcliente, String fecha, Model model) {
         nuevo.setId(id);
-        return construirCuadro(nuevo, nifautor, nifcliente, fecha, model);
+        return construirCuadro(nuevo, anyo, nifautor, nifcliente, fecha, model);
     }
 
     @RequestMapping("/nuevocuadro")
@@ -88,7 +88,7 @@ public class CuadrosController {
 
     @RequestMapping("/buscarcuadro")
     public String buscarCuadro(String busqueda, String criterio, Model model){
-        List<Cuadro> lista=null;
+        List<Cuadro> lista = null;
 
         switch (criterio){
             case "titulo":
@@ -110,7 +110,7 @@ public class CuadrosController {
                 lista=cuadroRepository.findByPrecio(Integer.parseInt(busqueda));
                 break;
         }
-        if (lista.isEmpty()){
+        if (lista == null || lista.isEmpty()){
             String men = "No se ha encontrado ningun cuadro con " + criterio + " " + "\"" + busqueda + "\"";
             model.addAttribute("mensaje", men);
             return "error_msg";
@@ -191,11 +191,11 @@ public class CuadrosController {
         }
         else {
             model.addAttribute("cuadros", lista);
-            return "cuadros_template";
+            return "cuadrosvendidos_template";
         }
     }
 
-    public String construirCuadro(Cuadro nuevo, String nifautor, String nifcliente, String fecha, Model model) {
+    public String construirCuadro(Cuadro nuevo, String anyo, String nifautor, String nifcliente, String fecha, Model model) {
         if(nuevo.isVendido()){
             if(nifcliente.isBlank()){
                 model.addAttribute("mensaje", "No se ha seleccionado ningun comprador.");
@@ -215,6 +215,17 @@ public class CuadrosController {
             model.addAttribute("mensaje", "La descripcion no puede superar los 255 caracteres.");
             return "error_msg";
         }
+        if(anyo.isBlank()){
+            nuevo.setAnyoFinalizacion(0);
+        }else{
+            try{
+                nuevo.setAnyoFinalizacion(Integer.parseInt(anyo));
+            }catch (Exception e){
+                model.addAttribute("mensaje", "El año de finalizacion debe ser un dato numerico.");
+                return "error_msg";
+            }
+        }
+
         Autor a = autorRepository.findByNIF(nifautor);
         nuevo.setAutor(a);
         Cliente c = new Cliente();

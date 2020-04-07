@@ -22,7 +22,7 @@ public class Cuadro {
     private boolean vendido;
     private String titulo;
     private String descripcion;
-    private int anyoFinalizacion;
+    private Integer anyoFinalizacion;
     private float anchura;
     private float altura;
     private int precio;

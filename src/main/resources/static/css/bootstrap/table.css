@@ -73,7 +73,7 @@ table td.r, table th.r {
 
 .table100-head th{
     font-family: inherit;
-    font-size: 18px;
+    font-size: 16px;
     color: #fff;
     line-height: 1.2;
     font-weight: unset;
@@ -98,16 +98,16 @@ tbody tr:hover {
 }
 
 .column1 {
-    width: 260px;
+    width: 30%;
     padding-left: 40px;
 }
 
 .column2 {
-    width: 260px;
+    width: 35%;
 }
 
 .column3 {
-    width: 235px;
+    width: 20%;
     /* 150px por defecto */
 }
 
@@ -119,14 +119,24 @@ tbody tr:hover {
 
 .column5 {
     width: 222px;
-    text-align: right;
-    padding-right: 62px;
+    text-align: center;
+    padding-right: 2rem;
+    padding-left: 4rem;
 }
 
 .column6 {
-    width: 14rem;
+    width: fit-content;
     text-align: right;
-    padding-right: 62px;
+    padding-right: 2rem;
+}
+
+.column7 {
+    width: 9%;
+}
+
+.column8 {
+    width: 15%;
+    text-align: right;
 }
 
 

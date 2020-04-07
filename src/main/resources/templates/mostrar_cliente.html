@@ -7,6 +7,8 @@
     <link href="css/bootstrap/bootstrap-grid.css" rel="stylesheet">
     <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
     <link href="css/bootstrap/business.css" rel="stylesheet">
+    <link href="css/material-icons.css" rel="stylesheet">
+
     <title>Cliente</title>
 </head>
 <body>
@@ -40,10 +42,12 @@
             <small th:text="${cliente.getNombre().toUpperCase()} + ' ' + ${cliente.getApellidos().toUpperCase()}"></small>
         </h1>
         <div class="boton-volver">
-            <div class="btn btn-secondary">
-                <a href="/clientes" ><img src="../images/round_arrow_back_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
-                <a href="/clientes" th:text="'Volver'" class="texto-boton"></a>
-            </div>
+            <a href="/clientes" class="texto-boton">
+                <div class="btn btn-secondary">
+                    <span class="material-icons">arrow_back</span>
+                    Volver
+                </div>
+            </a>
         </div>
 
     </div>
@@ -78,12 +82,62 @@
             <p class="sin-informacion" th:if="${cliente.getTelefono().isBlank()}">Sin informacion</p>
         </div>
         <div class="boton-modificar-mostrar">
-            <div class="btn btn-primary">
-                <a th:href="@{/modificarclienteform(id = ${cliente.getId()})}" ><img src="../images/round_create_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
-                <a th:href="@{/modificarclienteform(id = ${cliente.getId()})}" th:text="'Modificar'" class="texto-boton"></a>
+            <a th:href="@{/modificarclienteform(id = ${cliente.getId()})}" class="texto-boton">
+                <div class="btn btn-primary">
+                    <span class="icono-modificar material-icons">create</span>
+                    Modificar
+                </div>
+            </a>
+        </div>
+    </div>
+    <p class="nombre-atributo">Cuadros comprados por este cliente:</p>
+    <div class="limiter" th:unless="${cliente.getCuadros().isEmpty()}">
+        <div class="wrap-table100">
+            <div class="table100">
+                <table>
+                    <thead>
+                    <tr class="table100-head">
+                        <th class="column1">Titulo</th>
+                        <th class="column2">Autor</th>
+                        <th class="column3">Fecha de compra</th>
+                        <th class="column4">Precio</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="cuadro : ${cliente.getCuadros()}">
+                        <td class="column1">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
+                                <div th:text="${cuadro.getTitulo()}" class="column1"></div>
+                            </a>
+                        </td>
+                        <td class="column2">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
+                                <div th:text="${cuadro.getAutor()}" class="column2"></div>
+                            </a>
+                        </td>
+                        <td class="column3">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
+                                <div th:text="${cuadro.fechaFormateada()}" class="column3"></div>
+                            </a>
+                        </td>
+                        <td class="column4">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
+                                <div th:text="${cuadro.getPrecio()}" class="column4"></div>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
 
+
+    <div class="cuadro-advertencia" th:if="${cliente.getCuadros().isEmpty()}">
+        <div class="texto-advertencia">
+            <span class="material-icons">warning</span>
+            Este cliente no ha comprado ningun cuadro.
+        </div>
     </div>
 </div>
 

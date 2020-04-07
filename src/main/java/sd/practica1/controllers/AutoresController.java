@@ -46,19 +46,9 @@ public class AutoresController {
     }
 
     @RequestMapping("/guardarautor")
-    public String guardarAutor(Autor autor, Model model){
+    public String guardarAutor(Autor autor, String anyo, Model model){
         if(autorRepository.findByNIF(autor.getNIF())== null) {
-            if (autor.getTlf() != "") {
-                try {
-                    Integer.parseInt(autor.getTlf());
-                } catch (Exception e) {
-                    String mensaje = "Error el telefono ha de ser un numero";
-                    model.addAttribute("mensaje", mensaje);
-                    return "error_msg";
-                }
-            }
-            autorRepository.save(autor);
-            return "exito";
+            return construirAutor(autor, anyo, model);
         }
         else{
             String mensaje ="Error el autor con NIF " + autor.getNIF() + "ya existe.";
@@ -68,14 +58,28 @@ public class AutoresController {
     }
 
     @RequestMapping("/modificarautor")
-    public String modificarAutor(@RequestParam Integer id,Autor nuevo, Model model){
+    public String modificarAutor(@RequestParam Integer id,Autor nuevo, String anyo, Model model){
         nuevo.setId(id);
-        if (nuevo.getTlf()!=""){
+        return construirAutor(nuevo, anyo, model);
+    }
+
+    private String construirAutor(Autor nuevo, String anyo, Model model) {
+        if (nuevo.getTlf().equals("")){
             try {
                 Integer.parseInt(nuevo.getTlf());
             }catch (Exception e){
                 String mensaje = "Error el telefono ha de ser un numero";
                 model.addAttribute("mensaje", mensaje);
+                return "error_msg";
+            }
+        }
+        if(anyo.isBlank()){
+            nuevo.setAnyoNacimiento(0);
+        }else{
+            try{
+                nuevo.setAnyoNacimiento(Integer.parseInt(anyo));
+            }catch (Exception e){
+                model.addAttribute("mensaje", "El año de finalizacion debe ser un dato numerico.");
                 return "error_msg";
             }
         }

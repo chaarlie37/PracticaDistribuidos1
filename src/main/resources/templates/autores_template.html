@@ -8,6 +8,7 @@
     <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
     <link href="css/bootstrap/business.css" rel="stylesheet">
     <link href="css/bootstrap/table.css" rel="stylesheet">
+    <link href="css/material-icons.css" rel="stylesheet">
     <title>Autores</title>
 </head>
 <body>
@@ -54,12 +55,18 @@
                     <option value="telefono">Telefono</option>
                 </select>
             </div>
-            <input type="submit" value=" Buscar " class="btn btn-primary">
+            <button type="submit" class="btn btn-primary">
+                <span class="material-icons">search</span>
+                Buscar
+            </button>
         </div>
     </form>
 
     <div class="encima-tabla">
-        <a href="nuevo_autor.html" class="btn btn-primary">Añadir autor</a>
+        <a href="/nuevo_autor.html" class="btn btn-primary">
+            <span class="material-icons">add_circle_outline</span>
+            Añadir autor
+        </a>
         <form th:action="@{/mostrarautoresorden(lista= ${autores})}" method="post">
             <div class="ordenar-por-group">
                 <div class="ordenar-por">
@@ -71,7 +78,10 @@
                         <option value="apellidosDesc">Apellidos(Z-A)</option>
                     </select>
                 </div>
-                <input type="submit" value="Ordenar" class="btn btn-secondary"/>
+                <button type="submit" class="btn btn-secondary">
+                    <span class="material-icons">swap_vert</span>
+                    Ordenar
+                </button>
             </div>
 
         </form>
@@ -84,34 +94,36 @@
                 <table>
                     <thead>
                     <tr class="table100-head">
-                        <th class="column1">NIF</th>
-                        <th class="column2">Nombre</th>
-                        <th class="column3">Apellidos</th>
-                        <th class="column4"></th>
+                        <th class="column1">Nombre</th>
+                        <th class="column2">Apellidos</th>
+                        <th class="column3">NIF</th>
+                        <th class="column6"></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="autor : ${autores}">
                         <td  class="column1">
-                            <a th:href="@{/mostrarautor(id = ${autor.getId()})}">
-                                <div th:text="${autor.getNIF()}"></div>
-                            </a>
-                        </td>
-                        <td  class="column2">
-                            <a th:href="@{/mostrarautor(id = ${autor.getId()})}">
+                            <a th:href="@{/mostrarautor(id = ${autor.getId()})}" title="Ver detalles">
                                 <div th:text="${autor.getNombre()}"></div>
                             </a>
                         </td>
-                        <td class="column3">
-                            <a th:href="@{/mostrarautor(id = ${autor.getId()})}">
-                                <div th:text="${autor.getApellidos()}" ></div>
+                        <td class="column2">
+                            <a th:href="@{/mostrarautor(id = ${autor.getId()})}" title="Ver detalles">
+                                <div th:text="${autor.getApellidos()}" th:unless="${autor.getApellidos().isBlank()}"></div>
+                                <div th:if="${autor.getApellidos().isBlank()}">-</div>
                             </a>
                         </td>
-                        <td class="column4">
-                            <div class="boton-tabla">
-                                <a th:href="@{/modificarautorform(nif = ${autor.getNIF()})}" th:text="Modificar" ></a>
-                                <a th:href="@{/modificarautorform(nif = ${autor.getNIF()})}"><img src="../images/round_create_white_18dp.png" height="12" width="10" class="icono-modifica"></a>
-                            </div>
+                        <td  class="column3">
+                            <a th:href="@{/mostrarautor(id = ${autor.getId()})}" title="Ver detalles">
+                                <div th:text="${autor.getNIF()}"></div>
+                            </a>
+                        </td>
+                        <td class="column6">
+                            <a th:href="@{/modificarautorform(id = ${autor.getId()})}" class="btn boton-tabla" title="Modificar">
+                                <div class="texto-boton-tabla">
+                                    <span class="icono-modificar-tabla material-icons">create</span>
+                                </div>
+                            </a>
                         </td>
                     </tr>
                     </tbody>

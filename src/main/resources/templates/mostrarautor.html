@@ -8,6 +8,7 @@
     <link href="css/bootstrap/bootstrap-grid.css" rel="stylesheet">
     <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
     <link href="css/bootstrap/business.css" rel="stylesheet">
+    <link href="css/material-icons.css" rel="stylesheet">
     <title>Autor</title>
 </head>
 <body>
@@ -41,10 +42,12 @@
             <small th:text="${autor.getNombre().toUpperCase()} + ' ' + ${autor.getApellidos().toUpperCase()} "></small>
         </h1>
         <div class="boton-volver">
-            <div class="btn btn-secondary">
-                <a href="/autores"><img src="../images/round_arrow_back_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
-                <a href="/autores" th:text="'Volver'" class="texto-boton"></a>
-            </div>
+            <a href="/autores" class="texto-boton">
+                <div class="btn btn-secondary">
+                    <span class="material-icons">arrow_back</span>
+                    Volver
+                </div>
+            </a>
         </div>
     </div>
 
@@ -89,11 +92,15 @@
         </div>
 
         <div class="boton-modificar-mostrar">
-            <div class="btn btn-primary">
-                <a th:href="@{/modificarautorform(id = ${autor.getId()})}" ><img src="../images/round_create_white_18dp.png" height="18" width="18" class="icono-modificar"></a>
-                <a th:href="@{/modificarautorform(id = ${autor.getId()})}" th:text="'Modificar'" class="texto-boton"></a>
-            </div>
+            <a th:href="@{/modificarautorform(id = ${autor.getId()})}" class="texto-boton">
+                <div class="btn btn-primary">
+                    <span class="icono-modificar material-icons">create</span>
+                    Modificar
+                </div>
+            </a>
         </div>
+
+
     </div>
 
     <p class="nombre-atributo">Cuadros de este autor:</p>
@@ -112,26 +119,25 @@
                     <tbody>
                     <tr th:each="cuadro : ${autor.getCuadros()}">
                         <td class="column1">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
                                 <div th:text="${cuadro.getTitulo()}" class="column1"></div>
                             </a>
                         </td>
                         <td class="column2">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
                                 <div th:text="${cuadro.getAnyoFinalizacion()}" class="column2"></div>
                             </a>
                         </td>
                         <td class="column3">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
                                 <div th:text="${cuadro.vendido_texto()}" class="column3"></div>
                             </a>
                         </td>
                         <td class="column4">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getTitulo()})}">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
                                 <div th:text="${cuadro.getPrecio()}" class="column4"></div>
                             </a>
                         </td>
-
                     </tr>
                     </tbody>
                 </table>
@@ -139,7 +145,10 @@
         </div>
     </div>
     <div class="cuadro-advertencia" th:if="${autor.getCuadros().isEmpty()}">
-        <div class="texto-advertencia">Este autor no tiene cuadros.</div>
+        <div class="texto-advertencia">
+            <span class="material-icons">warning</span>
+            Este autor no tiene cuadros.
+        </div>
     </div>
 
 </div>

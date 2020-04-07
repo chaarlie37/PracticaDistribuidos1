@@ -1,6 +1,5 @@
 package sd.practica1.controllers;
 
-import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +9,7 @@ import sd.practica1.model.Cliente;
 import sd.practica1.repositories.ClienteRepository;
 
 import javax.annotation.PostConstruct;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class ClientesController {
@@ -22,6 +19,7 @@ public class ClientesController {
 
     @PostConstruct
     public void init(){
+
         Cliente c1 = new Cliente("Carlos","Sanchez Muñoz","987654321A","Calle Aaaaaaa, 327","direccion@gmail.com","123456789");
         Cliente c2 = new Cliente("Francisco","Pedraja Alonso","789456123B","Calle Kkkkkkkk, 27, Aranjuez","tonto@gmail.com","254987321");
         Cliente c3 = new Cliente("Lidia","Hernandez Calvo","123456789N","Calle Cccccccccc, 72, Valdemoro","rubia@gmail.com","456987123");
