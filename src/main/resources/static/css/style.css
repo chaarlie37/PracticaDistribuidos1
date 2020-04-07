@@ -148,5 +148,10 @@
 }
 
 .texto-boton-tabla{
-    color: #0069d9;
+    color: #007bff;
+}
+
+.material-icons.icono-modificar-tabla{
+    font-size:18px;
+    color:#007bff;
 }
