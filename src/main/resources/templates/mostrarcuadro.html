@@ -59,11 +59,13 @@
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Año de finalizacion</p>
-            <p th:text="${cuadro.getAnyoFinalizacion()}" class="atributo"></p>
+            <p th:text="${cuadro.getAnyoFinalizacion()}" class="atributo" th:unless="${cuadro.getAnyoFinalizacion()==null or cuadro.getAnyoFinalizacion()==0}"></p>
+            <p class="sin-informacion" th:if="${cuadro.getAnyoFinalizacion()==null or cuadro.getAnyoFinalizacion()==0}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Descripcion</p>
-            <p th:text="${cuadro.getDescripcion()}" class="atributo"></p>
+            <p th:text="${cuadro.getDescripcion()}" class="atributo" th:unless="${cuadro.getDescripcion().isBlank()}"></p>
+            <p class="sin-informacion" th:if="${cuadro.getDescripcion().isBlank()}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Anchura</p>

@@ -41,6 +41,15 @@ public class ClientesController {
     @RequestMapping("/guardarcliente")
     public String guardarCliente(Cliente cliente,Model model){
         if(clienteRepository.findByNIF(cliente.getNIF()) == null){
+            if (cliente.getTelefono()!=""){
+                try {
+                    Integer.parseInt(cliente.getTelefono());
+                }catch (Exception e){
+                    String mensaje = "Error el telefono ha de ser un numero";
+                    model.addAttribute("mensaje", mensaje);
+                    return "error_msg";
+                }
+            }
             clienteRepository.save(cliente);
             return "exito";
         }
@@ -69,6 +78,15 @@ public class ClientesController {
     @RequestMapping("/modificarcliente")
     public String modificarCliente(@RequestParam Integer id, Cliente nuevo, Model model){
         nuevo.setId(id);
+        if (nuevo.getTelefono()!=""){
+            try {
+                Integer.parseInt(nuevo.getTelefono());
+            }catch (Exception e){
+                String mensaje = "Error el telefono ha de ser un numero";
+                model.addAttribute("mensaje", mensaje);
+                return "error_msg";
+            }
+        }
         clienteRepository.save(nuevo);
         return "exito";
     }

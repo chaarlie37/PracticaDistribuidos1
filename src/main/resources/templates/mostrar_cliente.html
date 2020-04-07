@@ -55,7 +55,8 @@
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Apellidos</p>
-            <p th:text="${cliente.getApellidos()}" class="atributo"></p>
+            <p th:text="${cliente.getApellidos()}" class="atributo" th:unless="${cliente.getApellidos().isBlank()}"></p>
+            <p class="sin-informacion" th:if="${cliente.getApellidos().isBlank()}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">NIF</p>
@@ -63,15 +64,18 @@
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Direccion</p>
-            <p th:text="${cliente.getDireccion()}" class="atributo"></p>
+            <p th:text="${cliente.getDireccion()}" class="atributo" th:unless="${cliente.getDireccion().isBlank()}"></p>
+            <p class="sin-informacion" th:if="${cliente.getDireccion().isBlank()}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">e-mail</p>
-            <p th:text="${cliente.getEmail()}" class="atributo"></p>
+            <p th:text="${cliente.getEmail()}" class="atributo" th:unless="${cliente.getEmail().isBlank()}"></p>
+            <p class="sin-informacion" th:if="${cliente.getEmail().isBlank()}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Telefono</p>
-            <p th:text="${cliente.getTelefono()}" class="atributo"></p>
+            <p th:text="${cliente.getTelefono()}" class="atributo" th:unless="${cliente.getTelefono().isBlank()}"></p>
+            <p class="sin-informacion" th:if="${cliente.getTelefono().isBlank()}">Sin informacion</p>
         </div>
         <div class="boton-modificar-mostrar">
             <div class="btn btn-primary">

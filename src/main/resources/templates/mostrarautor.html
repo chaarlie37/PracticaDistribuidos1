@@ -55,7 +55,8 @@
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Apellidos</p>
-            <p th:text="${autor.getApellidos()}" class="atributo"></p>
+            <p th:text="${autor.getApellidos()}" class="atributo" th:unless="${autor.getApellidos().isBlank()}"></p>
+            <p class="sin-informacion" th:if="${autor.getApellidos().isBlank()}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">NIF</p>
@@ -63,23 +64,28 @@
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Año de nacimiento</p>
-            <p th:text="${autor.getAnyoNacimiento()}" class="atributo"></p>
+            <p th:text="${autor.getAnyoNacimiento()}" class="atributo" th:unless="${autor.getAnyoNacimiento()==null or autor.getAnyoNacimiento()==0}"></p>
+            <p class="sin-informacion" th:if="${autor.getAnyoNacimiento()==null or autor.getAnyoNacimiento()==0}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">País</p>
-            <p th:text="${autor.getPais()}" class="atributo"></p>
+            <p th:text="${autor.getPais()}" class="atributo" th:unless="${autor.getPais().isBlank()}"></p>
+            <p class="sin-informacion" th:if="${autor.getPais().isBlank()}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Dirección</p>
-            <p th:text="${autor.getDireccion()}" class="atributo"></p>
+            <p th:text="${autor.getDireccion()}" class="atributo" th:unless="${autor.getDireccion().isBlank()}"></p>
+            <p class="sin-informacion" th:if="${autor.getDireccion().isBlank()}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Email</p>
-            <p th:text="${autor.getEmail()}" class="atributo"></p>
+            <p th:text="${autor.getEmail()}" class="atributo" th:unless="${autor.getEmail().isBlank()}"></p>
+            <p class="sin-informacion" th:if="${autor.getEmail().isBlank()}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Teléfono</p>
-            <p th:text="${autor.getTlf()}" class="atributo"></p>
+            <p th:text="${autor.getTlf()}" class="atributo" th:unless="${autor.getTlf().isBlank()}"></p>
+            <p class="sin-informacion" th:if="${autor.getTlf().isBlank()}">Sin informacion</p>
         </div>
 
         <div class="boton-modificar-mostrar">

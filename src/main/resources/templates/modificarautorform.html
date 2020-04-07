@@ -51,13 +51,13 @@
         <div class="control-group form-group">
             <div class="controls">
                 <label>NIF</label>
-                <input type="text" name="NIF" class="form-control" th:value="${autor.getNIF()}">
+                <input type="text" name="NIF" class="form-control" th:value="${autor.getNIF()}" required>
             </div>
         </div>
         <div class="control-group form-group">
             <div class="controls">
                 <label>Año de nacimiento</label>
-                <input type="text" name="anyoNacimiento" class="form-control" th:value="${autor.getAnyoNacimiento()}" required>
+                <input type="number" name="anyoNacimiento" class="form-control" th:value="${autor.getAnyoNacimiento()}" required>
             </div>
         </div>
         <div class="control-group form-group">
