@@ -7,6 +7,7 @@
     <link href="css/bootstrap/bootstrap-grid.css" rel="stylesheet">
     <link href="css/bootstrap/bootstrap-reboot.css" rel="stylesheet">
     <link href="css/bootstrap/business.css" rel="stylesheet">
+    <link href="css/bootstrap/table.css" rel="stylesheet">
     <link href="css/material-icons.css" rel="stylesheet">
 
     <title>Cliente</title>
@@ -100,29 +101,29 @@
                         <th class="column1">Titulo</th>
                         <th class="column2">Autor</th>
                         <th class="column3">Fecha de compra</th>
-                        <th class="column4">Precio</th>
+                        <th class="column8">Precio</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="cuadro : ${cliente.getCuadros()}">
                         <td class="column1">
                             <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
-                                <div th:text="${cuadro.getTitulo()}" class="column1"></div>
+                                <div th:text="${cuadro.getTitulo()}"></div>
                             </a>
                         </td>
                         <td class="column2">
                             <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
-                                <div th:text="${cuadro.getAutor()}" class="column2"></div>
+                                <div th:text="${cuadro.getAutor()}"></div>
                             </a>
                         </td>
                         <td class="column3">
                             <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
-                                <div th:text="${cuadro.fechaFormateada()}" class="column3"></div>
+                                <div th:text="${cuadro.fechaFormateada()}"></div>
                             </a>
                         </td>
-                        <td class="column4">
+                        <td class="column8">
                             <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
-                                <div th:text="${cuadro.getPrecio()}" class="column4"></div>
+                                <div th:text="${cuadro.getPrecio()}"></div>
                             </a>
                         </td>
                     </tr>

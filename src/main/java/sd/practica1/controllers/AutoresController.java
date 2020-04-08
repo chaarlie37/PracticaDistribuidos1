@@ -74,7 +74,7 @@ public class AutoresController {
             }
         }
         if(anyo.isBlank()){
-            nuevo.setAnyoNacimiento(0);
+            nuevo.setAnyoNacimiento(null);
         }else{
             try{
                 nuevo.setAnyoNacimiento(Integer.parseInt(anyo));

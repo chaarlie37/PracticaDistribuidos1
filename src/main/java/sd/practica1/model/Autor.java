@@ -16,7 +16,7 @@ public class Autor {
     private String nombre;
     private String apellidos;
     private String NIF;
-    private int anyoNacimiento;
+    private Integer anyoNacimiento;
     private String pais;
     private String direccion;
     private String email;
@@ -71,11 +71,11 @@ public class Autor {
         this.NIF = NIF;
     }
 
-    public int getAnyoNacimiento() {
+    public Integer getAnyoNacimiento() {
         return anyoNacimiento;
     }
 
-    public void setAnyoNacimiento(int anyoNacimiento) {
+    public void setAnyoNacimiento(Integer anyoNacimiento) {
         this.anyoNacimiento = anyoNacimiento;
     }
 

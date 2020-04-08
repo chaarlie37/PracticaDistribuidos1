@@ -216,7 +216,7 @@ public class CuadrosController {
             return "error_msg";
         }
         if(anyo.isBlank()){
-            nuevo.setAnyoFinalizacion(0);
+            nuevo.setAnyoFinalizacion(null);
         }else{
             try{
                 nuevo.setAnyoFinalizacion(Integer.parseInt(anyo));

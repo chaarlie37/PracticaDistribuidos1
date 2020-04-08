@@ -178,11 +178,17 @@
 }
 
 .container-formularios{
-    width: 65%;
+    width: 70%;
 
 }
 
 .material-icons.icono-modificar{
     font-size: 19px;
     vertical-align: sub;
+}
+
+.sin-informacion{
+    font-style: italic;
+    font-weight: 300;
+    color: grey;
 }

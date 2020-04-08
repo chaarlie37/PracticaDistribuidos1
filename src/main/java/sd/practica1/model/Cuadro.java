@@ -70,11 +70,11 @@ public class Cuadro {
         this.descripcion = descripcion;
     }
 
-    public int getAnyoFinalizacion() {
+    public Integer getAnyoFinalizacion() {
         return anyoFinalizacion;
     }
 
-    public void setAnyoFinalizacion(int anyoFinalizacion) {
+    public void setAnyoFinalizacion(Integer anyoFinalizacion) {
         this.anyoFinalizacion = anyoFinalizacion;
     }
 

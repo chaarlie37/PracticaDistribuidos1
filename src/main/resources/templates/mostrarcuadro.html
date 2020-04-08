@@ -58,7 +58,7 @@
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Autor</p>
-               <a th:if="${cuadro.getAutor() != null}" th:href="@{/mostrarautor(nif=${cuadro.getAutor().getNIF()})}" th:text="${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.autor.getApellidos()}" class="atributo"></a><br><br>
+               <a th:if="${cuadro.getAutor() != null}" th:href="@{/mostrarautor(id=${cuadro.getAutor().getId()})}" th:text="${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.autor.getApellidos()}" class="atributo"></a><br><br>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Año de finalizacion</p>
@@ -72,11 +72,11 @@
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Anchura</p>
-            <p th:text="${cuadro.getAnchura()}" class="atributo"></p>
+            <p th:text="${cuadro.anchura_formato()} + ' cm'" class="atributo"></p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Altura</p>
-            <p th:text="${cuadro.getAltura()}" class="atributo"></p>
+            <p th:text="${cuadro.altura_formato()} + ' cm'" class="atributo"></p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Precio</p>
@@ -89,7 +89,7 @@
 
         <div class="atributo-mostrar" th:if="${cuadro.isVendido()}">
             <p class="nombre-atributo">Comprador</p>
-            <a th:href="@{/mostrarcliente (nif = cuadro.getComprador().getNIF())}" th:text="'Vendido:' + ${cuadro.getComprador().getNombre() + ' ' + cuadro.getComprador().getApellidos()}"></a>
+            <a th:href="@{/mostrarcliente (id = ${cuadro.getComprador().getId()})}" th:text="${cuadro.getComprador().getNombre() + ' ' + cuadro.getComprador().getApellidos()}" class="atributo"></a>
         </div>
         <div class="atributo-mostrar" th:if="${cuadro.isVendido()}">
             <p class="nombre-atributo">Fecha de venta</p>

@@ -111,31 +111,31 @@
                     <thead>
                     <tr class="table100-head">
                         <th class="column1">Titulo</th>
-                        <th class="column2">Año</th>
-                        <th class="column3">Vendido</th>
-                        <th class="column4">Precio</th>
+                        <th class="column7">Año de finalizacion</th>
+                        <th class="column8">Precio</th>
+                        <th class="column5">Vendido</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="cuadro : ${autor.getCuadros()}">
                         <td class="column1">
                             <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
-                                <div th:text="${cuadro.getTitulo()}" class="column1"></div>
+                                <div th:text="${cuadro.getTitulo()}"></div>
                             </a>
                         </td>
-                        <td class="column2">
+                        <td class="column7">
                             <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
-                                <div th:text="${cuadro.getAnyoFinalizacion()}" class="column2"></div>
+                                <div th:text="${cuadro.getAnyoFinalizacion()}"></div>
                             </a>
                         </td>
-                        <td class="column3">
+                        <td class="column8">
                             <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
-                                <div th:text="${cuadro.vendido_texto()}" class="column3"></div>
+                                <div th:text="${cuadro.getPrecio()} + ' €'"></div>
                             </a>
                         </td>
-                        <td class="column4">
+                        <td class="column5">
                             <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
-                                <div th:text="${cuadro.getPrecio()}" class="column4"></div>
+                                <div th:text="${cuadro.vendido_texto()}"></div>
                             </a>
                         </td>
                     </tr>

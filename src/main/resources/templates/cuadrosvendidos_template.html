@@ -52,13 +52,19 @@
                         <option value="precio">Precio</option>
                     </select>
                 </div>
-                <input type="submit" value=" Buscar " class="btn btn-primary">
+                <button type="submit" class="btn btn-primary">
+                    <span class="material-icons">search</span>
+                    Buscar
+                </button>
             </div>
         </form>
 
         <div class="encima-tabla">
             <div>
-                <a href="/nuevocuadro" class="btn btn-primary">Añadir cuadro</a>
+                <a href="/nuevocuadro" class="btn btn-primary">
+                    <span class="material-icons">add_circle_outline</span>
+                    Añadir cuadro
+                </a>
                 <a href="/cuadros" class="btn btn-light">Ver todos los cuadros</a>
             </div>
             <form th:action="@{/mostrarcuadrosvendidosorden(lista = ${cuadros})}" method="post">
@@ -74,7 +80,10 @@
                             <option value="precioDesc">Precio: mas caros primero</option>
                         </select>
                     </div>
-                    <input type="submit" value="Ordenar" class="btn btn-secondary">
+                    <button type="submit" class="btn btn-secondary">
+                        <span class="material-icons">swap_vert</span>
+                        Ordenar
+                    </button>
                 </div>
             </form>
         </div>
@@ -90,29 +99,29 @@
                         <th class="column1">Titulo</th>
                         <th class="column2">Comprador</th>
                         <th class="column3">Fecha de compra</th>
-                        <th class="column4">Precio</th>
+                        <th class="column8">Precio</th>
                         <th class="column6"></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="cuadro : ${cuadros}">
                         <td class="column1">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getId()})}" title="Ver detalles">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}" title="Ver detalles">
                                 <div th:text="${cuadro.getTitulo()}" ></div>
                             </a>
                         </td>
                         <td class="column2">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getId()})}" title="Ver detalles">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}" title="Ver detalles">
                                 <div th:text="${cuadro.getComprador().getNombre() + ' ' + cuadro.getComprador().getApellidos()}" ></div>
                             </a>
                         </td>
                         <td  class="column3">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getId()})}" title="Ver detalles">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}" title="Ver detalles">
                                 <div th:text="${cuadro.getFechaCompra()}"></div>
                             </a>
                         </td>
-                        <td  class="column4">
-                            <a th:href="@{/mostrarcuadro(titulo = ${cuadro.getId()})}" title="Ver detalles">
+                        <td  class="column8">
+                            <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}" title="Ver detalles">
                                 <div th:text="${cuadro.getPrecio()} + ' €'"></div>
                             </a>
                         </td>
