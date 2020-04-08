@@ -64,9 +64,17 @@ public class AutoresController {
     }
 
     private String construirAutor(Autor nuevo, String anyo, Model model) {
-        if (nuevo.getTlf().equals("")){
+        if (nuevo.getTlf().equals("")) {
+            nuevo.setTlf(null);
+        }
+        else{
             try {
-                Integer.parseInt(nuevo.getTlf());
+                Integer n=Integer.parseInt(nuevo.getTlf());
+                if (n<0){
+                    String mensaje = "El teléfono tiene que ser un número positivo";
+                    model.addAttribute("mensaje", mensaje);
+                    return "error_msg";
+                }
             }catch (Exception e){
                 String mensaje = "Error el teléfono ha de ser un número";
                 model.addAttribute("mensaje", mensaje);
@@ -78,6 +86,11 @@ public class AutoresController {
         }else{
             try{
                 nuevo.setAnyoNacimiento(Integer.parseInt(anyo));
+                if (nuevo.getAnyoNacimiento()<0){
+                    String mensaje = "El año de nacimiento tiene que ser un número positivo";
+                    model.addAttribute("mensaje", mensaje);
+                    return "error_msg";
+                }
             }catch (Exception e){
                 model.addAttribute("mensaje", "El año de finalización debe ser un dato numérico.");
                 return "error_msg";

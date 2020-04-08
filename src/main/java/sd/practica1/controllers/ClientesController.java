@@ -41,7 +41,12 @@ public class ClientesController {
         if(clienteRepository.findByNIF(cliente.getNIF()) == null){
             if (cliente.getTelefono()!=""){
                 try {
-                    Integer.parseInt(cliente.getTelefono());
+                    Integer n=Integer.parseInt(cliente.getTelefono());
+                    if (n<0){
+                        String mensaje="Error el teléfono tiene que ser un número positivo";
+                        model.addAttribute("mensaje", mensaje);
+                        return "error_msg";
+                    }
                 }catch (Exception e){
                     String mensaje = "Error el teléfono ha de ser un número";
                     model.addAttribute("mensaje", mensaje);
@@ -78,7 +83,12 @@ public class ClientesController {
         nuevo.setId(id);
         if (nuevo.getTelefono()!=""){
             try {
-                Integer.parseInt(nuevo.getTelefono());
+                Integer n=Integer.parseInt(nuevo.getTelefono());
+                if (n<0){
+                    String mensaje="Error el teléfono tiene que ser un número positivo";
+                    model.addAttribute("mensaje", mensaje);
+                    return "error_msg";
+                }
             }catch (Exception e){
                 String mensaje = "Error el teléfono ha de ser un número";
                 model.addAttribute("mensaje", mensaje);

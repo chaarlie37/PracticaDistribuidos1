@@ -220,10 +220,33 @@ public class CuadrosController {
         }else{
             try{
                 nuevo.setAnyoFinalizacion(Integer.parseInt(anyo));
+                if (nuevo.getAnyoFinalizacion()<0){
+                    String mensaje="Error el año tiene que ser un número positivo";
+                    model.addAttribute("mensaje", mensaje);
+                    return "error_msg";
+                }
             }catch (Exception e){
                 model.addAttribute("mensaje", "El año de finalización debe ser un dato numérico.");
                 return "error_msg";
             }
+        }
+
+        if (nuevo.getAltura()<0){
+            String mensaje="Error la altura tiene que ser un número positivo";
+            model.addAttribute("mensaje", mensaje);
+            return "error_msg";
+        }
+
+        if (nuevo.getAnchura()<0){
+            String mensaje="Error la anchura tiene que ser un número positivo";
+            model.addAttribute("mensaje", mensaje);
+            return "error_msg";
+        }
+
+        if (nuevo.getPrecio()<0){
+            String mensaje="Error el precio tiene que ser un número positivo";
+            model.addAttribute("mensaje", mensaje);
+            return "error_msg";
         }
 
         Autor a = autorRepository.findByNIF(nifautor);
