@@ -37,8 +37,9 @@ public class Cuadro {
 
     }
 
-    public Cuadro(String titulo,String descripcion,int anyoFinalizacion, float anchura, float altura, int precio){
+    public Cuadro(String titulo, Autor autor, String descripcion,int anyoFinalizacion, float anchura, float altura, int precio){
         this.titulo =  titulo;
+        this.autor = autor;
         this.descripcion= descripcion;
         this.anyoFinalizacion=anyoFinalizacion;
         this.anchura=anchura;
@@ -242,8 +243,7 @@ public class Cuadro {
 
     public String fechaFormateada(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        simpleDateFormat.format(fechaCompra);
-        return fechaCompra.toString();
+        return simpleDateFormat.format(fechaCompra);
     }
 
     @Override

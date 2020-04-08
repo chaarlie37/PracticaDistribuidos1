@@ -26,7 +26,7 @@ public class AutoresController {
 
     @PostConstruct
     public void init(){
-
+/*
         Autor a1 = new Autor("Fran","aaa","aaa",1111,"aaa","aaa","aaa","aaa");
         Autor a2 = new Autor("Margarita","bbb","bbb",2222,"bbb","bbb","bbb","bbb");
         Autor a3 = new Autor("Lidia","ccc","ccc",3333,"ccc","ccc","ccc","ccc");
@@ -36,6 +36,7 @@ public class AutoresController {
         autorRepository.save(a3);
         autorRepository.save(a4);
 
+ */
 
     }
 

@@ -28,7 +28,7 @@ public class Autor {
 
     }
 
-    public Autor(String nombre,String apellidos,String NIF, int anyoNacimiento, String pais, String direccion, String email, String tlf){
+    public Autor(String nombre,String apellidos,String NIF, Integer anyoNacimiento, String pais, String direccion, String email, String tlf){
         this.nombre = nombre;
         this.apellidos=apellidos;
         this.NIF=NIF;
@@ -150,7 +150,7 @@ public class Autor {
         Collections.sort(lista, new Comparator<Autor>() {
             @Override
             public int compare(Autor a1, Autor a2) {
-                return a1.getApellidos().compareTo(a2.getApellidos());
+                return a2.getApellidos().compareTo(a1.getApellidos());
             }
         });
     }

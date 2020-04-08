@@ -9,7 +9,7 @@ import java.util.List;
 public interface AutorRepository extends JpaRepository<Autor, Integer> {
 
     Autor findByNIF(String nif);
-    List<Autor> findByNombreContainsOrApellidosContainsOrNIFContainsOrAnyoNacimientoContainsOrPaisContainsOrDireccionContainsOrEmailContainsOrTelefonoContainsIgnoreCase(String nombre, String apellidos, String nif, int anyoNacimiento, String pais, String direccion, String email, String telefono);
+    Autor findByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(String nombre, String apellidos);
     List<Autor> findByNombreContainsIgnoreCase(String nombre);
     List<Autor> findByApellidosContainsIgnoreCase(String apellidos);
     List<Autor> findByNIFContainsIgnoreCase(String nif);
@@ -18,8 +18,4 @@ public interface AutorRepository extends JpaRepository<Autor, Integer> {
     List<Autor> findByDireccionContainsIgnoreCase(String direccion);
     List<Autor> findByEmailContainsIgnoreCase(String email);
     List<Autor> findByTelefonoContainsIgnoreCase(String telefono);
-    List<Autor> findAllByOrderByNombreAsc();
-    List<Autor> findAllByOrderByNombreDesc();
-    List<Autor> findAllByOrderByApellidosAsc();
-    List<Autor> findAllByOrderByApellidosDesc();
 }

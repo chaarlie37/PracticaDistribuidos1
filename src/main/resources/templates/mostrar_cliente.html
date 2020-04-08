@@ -113,7 +113,7 @@
                         </td>
                         <td class="column2">
                             <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
-                                <div th:text="${cuadro.getAutor()}"></div>
+                                <div th:text="${cuadro.getAutor().getNombre() + ' ' + cuadro.getAutor().getApellidos()}"></div>
                             </a>
                         </td>
                         <td class="column3">
@@ -123,7 +123,7 @@
                         </td>
                         <td class="column8">
                             <a th:href="@{/mostrarcuadro(id = ${cuadro.getId()})}">
-                                <div th:text="${cuadro.getPrecio()}"></div>
+                                <div th:text="${cuadro.getPrecio()} + ' €'"></div>
                             </a>
                         </td>
                     </tr>

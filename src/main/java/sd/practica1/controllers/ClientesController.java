@@ -19,7 +19,7 @@ public class ClientesController {
 
     @PostConstruct
     public void init(){
-
+/*
         Cliente c1 = new Cliente("Carlos","Sanchez Muñoz","987654321A","Calle Aaaaaaa, 327","direccion@gmail.com","123456789");
         Cliente c2 = new Cliente("Francisco","Pedraja Alonso","789456123B","Calle Kkkkkkkk, 27, Aranjuez","tonto@gmail.com","254987321");
         Cliente c3 = new Cliente("Lidia","Hernandez Calvo","123456789N","Calle Cccccccccc, 72, Valdemoro","rubia@gmail.com","456987123");
@@ -28,6 +28,7 @@ public class ClientesController {
         clienteRepository.save(c2);
         clienteRepository.save(c3);
         clienteRepository.save(c4);
+        */
     }
 
     @RequestMapping("/clientes")

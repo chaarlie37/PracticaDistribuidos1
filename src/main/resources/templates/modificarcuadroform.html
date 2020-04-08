@@ -48,7 +48,7 @@
             <div class="controls">
                 <label>Autor</label>
                 <select name="nifautor" class="custom-select">
-                    <option th:each="autor : ${autores}" th:value="${autor.getNIF()}" th:text="${autor.getNombre() + ' ' + autor.getApellidos()}" th:selected="${cuadro.getAutor()}"></option>
+                    <option th:each="autor : ${autores}" th:value="${autor.getNIF()}" th:text="${autor.getNombre() + ' ' + autor.getApellidos()}" th:selected="${cuadro.getAutor().getId() == autor.getId()}"></option>
                 </select>
             </div>
         </div>
