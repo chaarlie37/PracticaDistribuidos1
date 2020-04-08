@@ -68,19 +68,19 @@
             <p th:text="${cliente.getNIF()}" class="atributo"></p>
         </div>
         <div class="atributo-mostrar">
-            <p class="nombre-atributo">Direccion</p>
+            <p class="nombre-atributo">Dirección</p>
             <p th:text="${cliente.getDireccion()}" class="atributo" th:unless="${cliente.getDireccion().isBlank()}"></p>
-            <p class="sin-informacion" th:if="${cliente.getDireccion().isBlank()}">Sin informacion</p>
+            <p class="sin-informacion" th:if="${cliente.getDireccion().isBlank()}">Sin información</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">e-mail</p>
             <p th:text="${cliente.getEmail()}" class="atributo" th:unless="${cliente.getEmail().isBlank()}"></p>
-            <p class="sin-informacion" th:if="${cliente.getEmail().isBlank()}">Sin informacion</p>
+            <p class="sin-informacion" th:if="${cliente.getEmail().isBlank()}">Sin información</p>
         </div>
         <div class="atributo-mostrar">
             <p class="nombre-atributo">Telefono</p>
             <p th:text="${cliente.getTelefono()}" class="atributo" th:unless="${cliente.getTelefono().isBlank()}"></p>
-            <p class="sin-informacion" th:if="${cliente.getTelefono().isBlank()}">Sin informacion</p>
+            <p class="sin-informacion" th:if="${cliente.getTelefono().isBlank()}">Sin información</p>
         </div>
         <div class="boton-modificar-mostrar">
             <a th:href="@{/modificarclienteform(id = ${cliente.getId()})}" class="texto-boton">
@@ -98,7 +98,7 @@
                 <table>
                     <thead>
                     <tr class="table100-head">
-                        <th class="column1">Titulo</th>
+                        <th class="column1">Título</th>
                         <th class="column2">Autor</th>
                         <th class="column3">Fecha de compra</th>
                         <th class="column8">Precio</th>
@@ -137,7 +137,7 @@
     <div class="cuadro-advertencia" th:if="${cliente.getCuadros().isEmpty()}">
         <div class="texto-advertencia">
             <span class="material-icons">warning</span>
-            Este cliente no ha comprado ningun cuadro.
+            Este cliente no ha comprado ningún cuadro.
         </div>
     </div>
 </div>

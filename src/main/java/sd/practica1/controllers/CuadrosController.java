@@ -111,12 +111,12 @@ public class CuadrosController {
                 break;
         }
         if (lista == null || lista.isEmpty()){
-            String men = "No se ha encontrado ningun cuadro con " + criterio + " " + "\"" + busqueda + "\"";
+            String men = "No se ha encontrado ningún cuadro con " + criterio + " " + "\"" + busqueda + "\"";
             model.addAttribute("mensaje", men);
             return "error_msg";
         }
         else if(busqueda.equals("")){
-            String mens = "No se ha insertado nada en la barra de busqueda.";
+            String mens = "No se ha insertado nada en la barra de búsqueda.";
             model.addAttribute("mensaje", mens);
             return "error_msg";
         }
@@ -180,12 +180,12 @@ public class CuadrosController {
                 break;
         }
         if (lista.isEmpty()){
-            String men = "No se ha encontrado ningun cuadro con " + criterio + " " + "\"" + busqueda + "\"";
+            String men = "No se ha encontrado ningún cuadro con " + criterio + " " + "\"" + busqueda + "\"";
             model.addAttribute("mensaje", men);
             return "error_msg";
         }
         else if(busqueda.equals("")){
-            String mens = "No se ha insertado nada en la barra de busqueda.";
+            String mens = "No se ha insertado nada en la barra de búsqueda.";
             model.addAttribute("mensaje", mens);
             return "error_msg";
         }
@@ -198,21 +198,21 @@ public class CuadrosController {
     public String construirCuadro(Cuadro nuevo, String anyo, String nifautor, String nifcliente, String fecha, Model model) {
         if(nuevo.isVendido()){
             if(nifcliente.isBlank()){
-                model.addAttribute("mensaje", "No se ha seleccionado ningun comprador.");
+                model.addAttribute("mensaje", "No se ha seleccionado ningún comprador.");
                 return "error_msg";
             }
             if(fecha.isBlank()){
-                model.addAttribute("mensaje", "No se ha seleccionado ninguna fecha valida.");
+                model.addAttribute("mensaje", "No se ha seleccionado ninguna fecha válida.");
                 return "error_msg";
             }
         }
         System.out.println("nif " + nifautor);
         if(nifautor.isBlank()){
-            model.addAttribute("mensaje", "No se ha seleccionado ningun autor.");
+            model.addAttribute("mensaje", "No se ha seleccionado ningún autor.");
             return "error_msg";
         }
         if(nuevo.getDescripcion().length() > 255){
-            model.addAttribute("mensaje", "La descripcion no puede superar los 255 caracteres.");
+            model.addAttribute("mensaje", "La descripción no puede superar los 255 caracteres.");
             return "error_msg";
         }
         if(anyo.isBlank()){
@@ -221,7 +221,7 @@ public class CuadrosController {
             try{
                 nuevo.setAnyoFinalizacion(Integer.parseInt(anyo));
             }catch (Exception e){
-                model.addAttribute("mensaje", "El año de finalizacion debe ser un dato numerico.");
+                model.addAttribute("mensaje", "El año de finalización debe ser un dato numérico.");
                 return "error_msg";
             }
         }

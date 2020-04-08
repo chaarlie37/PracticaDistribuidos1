@@ -53,7 +53,7 @@
 
     <div class="zona-mostrar">
         <div class="atributo-mostrar">
-            <p class="nombre-atributo">Titulo</p>
+            <p class="nombre-atributo">Título</p>
             <p th:text="${cuadro.getTitulo()}" class="atributo"></p>
         </div>
         <div class="atributo-mostrar">
@@ -61,12 +61,12 @@
                <a th:if="${cuadro.getAutor() != null}" th:href="@{/mostrarautor(id=${cuadro.getAutor().getId()})}" th:text="${cuadro.getAutor().getNombre()} + ' ' + ${cuadro.autor.getApellidos()}" class="atributo"></a><br><br>
         </div>
         <div class="atributo-mostrar">
-            <p class="nombre-atributo">Año de finalizacion</p>
+            <p class="nombre-atributo">Año de finalización</p>
             <p th:text="${cuadro.getAnyoFinalizacion()}" class="atributo" th:unless="${cuadro.getAnyoFinalizacion()==null or cuadro.getAnyoFinalizacion()==0}"></p>
             <p class="sin-informacion" th:if="${cuadro.getAnyoFinalizacion()==null or cuadro.getAnyoFinalizacion()==0}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
-            <p class="nombre-atributo">Descripcion</p>
+            <p class="nombre-atributo">Descripción</p>
             <p th:text="${cuadro.getDescripcion()}" class="atributo" th:unless="${cuadro.getDescripcion().isBlank()}"></p>
             <p class="sin-informacion" th:if="${cuadro.getDescripcion().isBlank()}">Sin informacion</p>
         </div>

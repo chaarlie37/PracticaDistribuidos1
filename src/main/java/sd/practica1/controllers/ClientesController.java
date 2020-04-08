@@ -43,7 +43,7 @@ public class ClientesController {
                 try {
                     Integer.parseInt(cliente.getTelefono());
                 }catch (Exception e){
-                    String mensaje = "Error el telefono ha de ser un numero";
+                    String mensaje = "Error el teléfono ha de ser un número";
                     model.addAttribute("mensaje", mensaje);
                     return "error_msg";
                 }
@@ -80,7 +80,7 @@ public class ClientesController {
             try {
                 Integer.parseInt(nuevo.getTelefono());
             }catch (Exception e){
-                String mensaje = "Error el telefono ha de ser un numero";
+                String mensaje = "Error el teléfono ha de ser un número";
                 model.addAttribute("mensaje", mensaje);
                 return "error_msg";
             }

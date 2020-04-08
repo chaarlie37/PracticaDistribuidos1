@@ -81,7 +81,7 @@
             <p class="sin-informacion" th:if="${autor.getDireccion().isBlank()}">Sin informacion</p>
         </div>
         <div class="atributo-mostrar">
-            <p class="nombre-atributo">Email</p>
+            <p class="nombre-atributo">e-mail</p>
             <p th:text="${autor.getEmail()}" class="atributo" th:unless="${autor.getEmail().isBlank()}"></p>
             <p class="sin-informacion" th:if="${autor.getEmail().isBlank()}">Sin informacion</p>
         </div>
@@ -110,8 +110,8 @@
                 <table>
                     <thead>
                     <tr class="table100-head">
-                        <th class="column1">Titulo</th>
-                        <th class="column7">Año de finalizacion</th>
+                        <th class="column1">Título</th>
+                        <th class="column7">Año de finalización</th>
                         <th class="column8">Precio</th>
                         <th class="column5">Vendido</th>
                     </tr>

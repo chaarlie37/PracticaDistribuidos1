@@ -68,7 +68,7 @@ public class AutoresController {
             try {
                 Integer.parseInt(nuevo.getTlf());
             }catch (Exception e){
-                String mensaje = "Error el telefono ha de ser un numero";
+                String mensaje = "Error el teléfono ha de ser un número";
                 model.addAttribute("mensaje", mensaje);
                 return "error_msg";
             }
@@ -79,7 +79,7 @@ public class AutoresController {
             try{
                 nuevo.setAnyoNacimiento(Integer.parseInt(anyo));
             }catch (Exception e){
-                model.addAttribute("mensaje", "El año de finalizacion debe ser un dato numerico.");
+                model.addAttribute("mensaje", "El año de finalización debe ser un dato numérico.");
                 return "error_msg";
             }
         }
@@ -147,12 +147,12 @@ public class AutoresController {
         }
         if (lista.isEmpty()){
             String men;
-            men = "No se ha encontrado ningun autor con " + criterio + " " + "\"" + busqueda + "\"";
+            men = "No se ha encontrado ningún autor con " + criterio + " " + "\"" + busqueda + "\"";
             model.addAttribute("mensaje", men);
             return "error_msg";
         }
         else if(busqueda.equals("")){
-            String mens = "No se ha insertado nada en la barra de busqueda.";
+            String mens = "No se ha insertado nada en la barra de búsqueda.";
             model.addAttribute("mensaje", mens);
             return "error_msg";
         }

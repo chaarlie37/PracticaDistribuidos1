@@ -15,7 +15,7 @@
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Gestion de Base de Datos</a>
+        <a class="navbar-brand" href="index.html">Gestión de la Base de Datos</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,10 +46,10 @@
                 <div class="buscar-por">
                     <select name="criterio" class="custom-select">
                         <option value="titulo" selected="selected">Buscar por...</option>
-                        <option value="titulo">Titulo</option>
+                        <option value="titulo">Título</option>
                         <option value="autor">Autor</option>
-                        <option value="descripcion">Descripcion</option>
-                        <option value="anyo">Año de finalizacion</option>
+                        <option value="descripcion">Descripción</option>
+                        <option value="anyo">Año de finalización</option>
                         <option value="precio">Precio</option>
                     </select>
                 </div>
@@ -66,7 +66,7 @@
                     <span class="material-icons">add_circle_outline</span>
                     Añadir cuadro
                 </a>
-                <a href="/cuadrosvendidos" class="btn btn-light">Ver solo cuadros vendidos</a>
+                <a href="/cuadrosvendidos" class="btn btn-light">Ver sólo cuadros vendidos</a>
             </div>
             <form th:action="@{/mostrarcuadrosorden(lista = ${cuadros})}" method="post">
                 <div class="ordenar-por-group">
@@ -75,10 +75,10 @@
                             <option value="" selected="selected">Ordenar por...</option>
                             <option value="tituloAsc" type="submit">Titulo (A-Z)</option>
                             <option value="tituloDesc">Titulo (Z-A)</option>
-                            <option value="anyoAsc">Año: Mas antiguos primero</option>
-                            <option value="anyoDesc">Año: Mas recientes primero</option>
-                            <option value="precioAsc">Precio: mas baratos primero</option>
-                            <option value="precioDesc">Precio: mas caros primero</option>
+                            <option value="anyoAsc">Año: más antiguos primero</option>
+                            <option value="anyoDesc">Año: más recientes primero</option>
+                            <option value="precioAsc">Precio: más baratos primero</option>
+                            <option value="precioDesc">Precio: más caros primero</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-secondary">
@@ -97,9 +97,9 @@
                 <table>
                     <thead>
                     <tr class="table100-head">
-                        <th class="column1">Titulo</th>
+                        <th class="column1">Título</th>
                         <th class="column2">Autor</th>
-                        <th class="column7">Año de finalizacion</th>
+                        <th class="column7">Año de finalización</th>
                         <th class="column8">Precio</th>
                         <th class="column5">Vendido</th>
                         <th class="column6"></th>
